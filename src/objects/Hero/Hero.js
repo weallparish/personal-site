@@ -9,7 +9,7 @@ import { walls } from "../../levels/level1.js";
 import { resources } from "../Resource.js";
 import { Sprite } from "../Sprite.js";
 import { Vector2 } from "../../helpers/Vector2.js";
-import { STAND_DOWN, STAND_LEFT, STAND_RIGHT, STAND_UP, WALK_DOWN, WALK_LEFT, WALK_RIGHT, WALK_UP } from "./heroAnimations";
+import { STAND_DOWN, STAND_LEFT, STAND_RIGHT, STAND_UP, WALK_DOWN, WALK_LEFT, WALK_RIGHT, WALK_UP } from "./heroAnimations.js";
 
 export class Hero extends GameObject {
     constructor(x, y) {
