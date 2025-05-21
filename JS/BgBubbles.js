@@ -1,4 +1,4 @@
-import { rnd } from "./helpers/Math";
+import { rnd } from "./helpers/Math.js";
 
 var canvas = document.querySelector( 'canvas' );
 var canvasWidth = canvas.width = window.innerWidth;

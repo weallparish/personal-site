@@ -1,4 +1,4 @@
-import { rnd } from "./helpers/Math";
+import { rnd } from "./helpers/Math.js";
 
 const splashTextFilePath = './uploads/splashes.txt';
 var splashText = document.getElementById( "terminal-text" );
