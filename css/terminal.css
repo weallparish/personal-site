@@ -1,46 +1,13 @@
-.vt323-regular {
-    font-family: "VT323", monospace;
-    font-weight: 400;
-    font-style: normal;
-}
-  
-body {
-    background-color: black;
-}
-
-input {
-    background-color: black;
+#terminal-text {
+    margin: 0 20px 20px 20px; /* Gives that scrolling effect as the typing happens */
     font-family: "VT323";
     font-size: 30px;
-    color: green;
-    border: none;
-    outline: none;
+    color: var(--primary-main);
+    animation: blur 30ms infinite, jerk 50ms infinite, jerkup 60ms infinite;
+    -webkit-animation: blur 30ms infinite, blur 30ms infinite, jerk 50ms infinite, jerkup 60ms infinite;
 }
 
-#terminal {
-    margin-left: 20px;
-    font-family: "VT323";
-    font-size: 30px;
-    color: green;
-    -webkit-animation: blur 30ms infinite, jerk 50ms infinite, jerkup 60ms infinite;
-}
-
-#hiddenButton {
-    display: none;
-}
-
-::-webkit-scrollbar {
-    width: 6px;
-}
-::-webkit-scrollbar-track {
-    background-color: black; 
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: green;
-}
-
-::selection {color:black;background:green;}
+/* Animations */
 
 @-webkit-keyframes blur {
     0%   { -webkit-filter: 1blur(1px); opacity:0.8;}
@@ -48,13 +15,12 @@ input {
     100%{ -webkit-filter: blur(1px); opacity:0.8; }
 }
 
-@-webkit-keyframes jerk {
+@keyframes jerk {
     50% { left:1px; }
     51% { left:0; }
 }
 
-@-webkit-keyframes jerkup {
+@keyframes jerkup {
     50% { top:1px; }
     51% { top:0; }
 }
-

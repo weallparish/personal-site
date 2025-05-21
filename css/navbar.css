@@ -1,0 +1,29 @@
+.topnav {
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.links {
+  float: right;
+  margin-right: 10%;
+}
+
+.topnav a:hover {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--secondary-main);
+}
+
+.topnav a.active {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--primary-main);
+  color: var(--light);
+}

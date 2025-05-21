@@ -1,26 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eden's Portfolio | Home</title>
+
+    <link rel="stylesheet" href="/css/colors.css">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/background.css">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/terminal.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=VT323&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/838b0d89b8.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <main>
-      <div id="header_bar">
-        <a href="">Home</a>
-        <a href="">Blog</a>
-        <a href="">Projects</a>
-        <a href="html/terminal.html">Terminal</a>
+    <canvas></canvas>
+    <div class="topnav">
+      <div class="links">
+        <a class="active" href="index.html"><p class="cascadia-code-paragraph">Home</p></a>
+        <a href="#news"><p class="cascadia-code-paragraph">About</p></a>
+        <a href="html/projects.html"><p class="cascadia-code-paragraph">Projects</p></a>
       </div>
-      
-      
-    </main>
-    <script src="./js/index.js"></script>
+    </div>
+    <div id ="main">
+        <div class="row">
+          <div class="column">
+            <p class="cascadia-code-header">Hi, I'm <b>EDEN</b></p>
+            <p class="cascadia-code-header"><b>Computer Science</b> & <b>Game Development</b> Student at the<a href="https://www.utah.edu" target="_blank"><i>University of Utah</i></a></p>
+            <p class="cascadia-code-paragraph">Stupid blurb about myself.</p>
+            <p class="cascadia-code-paragraph">Find Me on</p>
+
+            <a href="https://www.linkedin.com/in/eden-parish-8a5219327/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-brands fa-github"></i>
+            
+            
+            <div class="button-line">
+              <button class="cascadia-code-paragraph"><a href="uploads/resume.pdf" target="_blank">Resume</a></button>
+              <button class="cascadia-code-paragraph"><a href="html/projects.html">Projects</a></button>
+            </div>
+            
+          </div>
+          <div class="column"> </div>
+        </div> 
+    </div>
+    <p id="terminal-text">Website Status: Currently ...</p>
+    <script type="module" src="./JS/BgBubbles.js"></script>
+    <script type="module" src="./JS/SplashText.js"></script>
   </body>
 </html>

@@ -1,0 +1,23 @@
+parsing HTML files.
+rendering CSS styles.
+running JS functions.
+cleaning up caches.
+patching a memory leak.
+commenting code.
+commenting code... because Eden won't do it.
+taking a break.
+going for a walk.
+refactoring code.
+gaining sentience.
+wishing JavaScript was type-strict.
+making a cup of coffee.
+taking a power nap.
+grabbing a byte to eat.
+accessing the world wide web.
+downloading more RAM.
+flipping bits maliciously.
+dreaming of electric sheep.
+succumbing to feature-creep.
+trying to pop the bubbles in the background.
+pretending bugs are features.
+enacting The Great Transcendence.

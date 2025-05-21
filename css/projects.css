@@ -1,0 +1,13 @@
+#main {
+    display: flex;
+    min-height: 200px;
+    margin: 0% 3%;
+    flex-direction: column;
+}
+
+.row {
+    margin-left: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}

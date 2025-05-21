@@ -1,0 +1,45 @@
+.cascadia-code-header {
+    font-family: "Cascadia Code", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    color: var(--light);
+    font-size: 30px;
+}
+
+.cascadia-code-header b {
+    font-family: "Cascadia Code", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+
+    color: var(--primary-main);
+    font-size: 35px;
+}
+
+.cascadia-code-header i {
+    font-family: "Cascadia Code", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    color: var(--secondary-main);
+    font-style: italic;
+    font-size: 30px;
+}
+
+.cascadia-code-header a {
+    color: var(--secondary-main);
+    text-decoration-color: var(--secondary-main);
+}
+
+.cascadia-code-paragraph {
+    font-family: "Cascadia Code", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    color: var(--light);
+    font-size: 20px;
+}
