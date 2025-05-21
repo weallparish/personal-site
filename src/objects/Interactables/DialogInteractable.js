@@ -1,4 +1,4 @@
-import { Interactable } from "./Interactable";
+import { Interactable } from "./Interactable.js";
 
 export class DialogInteractable extends Interactable {
     constructor(x, y, dialog) {

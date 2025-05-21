@@ -1,20 +1,13 @@
 import '../css/portfolio.css'
-import { Animations } from './objects/Animations.js';
 import { Camera } from './objects/Camera.js';
-import { events } from './objects/Events.js';
-import { FrameIndexPattern } from './objects/FrameIndexPattern.js';
 import { GameLoop } from './GameLoop.js';
 import { GameObject } from './objects/GameObject.js';
-import { gridCells, isSpaceFree } from './helpers/Grid.js';
-import { moveTowards } from './helpers/MoveTowards.js';
-import { Input, UP, DOWN, LEFT, RIGHT } from './helpers/Input.js';
-import { walls } from './levels/level1.js';
+import { gridCells } from './helpers/Grid.js';
+import { Input } from './helpers/Input.js';
 import { Hero } from './objects/Hero/Hero.js';
-import { STAND_DOWN, STAND_LEFT, STAND_RIGHT, STAND_UP, WALK_DOWN, WALK_LEFT, WALK_RIGHT, WALK_UP } from './objects/Hero/heroAnimations.js';
 import { resources } from './objects/Resource.js';
 import { Sprite } from './objects/Sprite.js';
 import { Vector2 } from './helpers/Vector2.js';
-import { Interactable } from './objects/Interactables/Interactable.js';
 import { DialogInteractable } from './objects/Interactables/DialogInteractable.js';
 
 // Grabbing the canvas to draw to

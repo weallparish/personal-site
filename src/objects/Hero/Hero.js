@@ -1,14 +1,14 @@
-import { Animations } from "../Animations";
-import { events } from "../Events";
-import { FrameIndexPattern } from "../FrameIndexPattern";
-import { GameObject } from "../GameObject";
-import { gridCells, isSpaceFree } from "../../helpers/Grid";
-import { moveTowards } from "../../helpers/MoveTowards";
-import { DOWN, LEFT, RIGHT, UP } from "../../helpers/Input";
-import { walls } from "../../levels/level1";
-import { resources } from "../Resource";
-import { Sprite } from "../Sprite";
-import { Vector2 } from "../../helpers/Vector2";
+import { Animations } from "../Animations.js";
+import { events } from "../Events.js";
+import { FrameIndexPattern } from "../FrameIndexPattern.js";
+import { GameObject } from "../GameObject.js";
+import { gridCells, isSpaceFree } from "../../helpers/Grid.js";
+import { moveTowards } from "../../helpers/MoveTowards.js";
+import { DOWN, LEFT, RIGHT, UP } from "../../helpers/Input.js";
+import { walls } from "../../levels/level1.js";
+import { resources } from "../Resource.js";
+import { Sprite } from "../Sprite.js";
+import { Vector2 } from "../../helpers/Vector2.js";
 import { STAND_DOWN, STAND_LEFT, STAND_RIGHT, STAND_UP, WALK_DOWN, WALK_LEFT, WALK_RIGHT, WALK_UP } from "./heroAnimations";
 
 export class Hero extends GameObject {

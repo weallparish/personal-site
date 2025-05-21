@@ -1,8 +1,8 @@
-import { gridCells } from "../../helpers/Grid";
-import { DOWN, LEFT, RIGHT, UP } from "../../helpers/Input";
-import { Vector2 } from "../../helpers/Vector2";
-import { events } from "../Events";
-import { GameObject } from "../GameObject";
+import { gridCells } from "../../helpers/Grid.js";
+import { DOWN, LEFT, RIGHT, UP } from "../../helpers/Input.js";
+import { Vector2 } from "../../helpers/Vector2.js";
+import { events } from "../Events.js";
+import { GameObject } from "../GameObject.js";
 
 export class Interactable extends GameObject {
     constructor(x, y) {
