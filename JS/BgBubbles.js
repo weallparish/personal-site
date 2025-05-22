@@ -9,6 +9,8 @@ var bg = window.getComputedStyle( document.body ).getPropertyValue( "--dark" );
 var primary = window.getComputedStyle( document.body ).getPropertyValue( "--primary-main" );
 var secondary = window.getComputedStyle( document.body ).getPropertyValue( "--secondary-main" );
 
+const circleDensity = 0.05;
+
 const minRadius = 1;
 const maxRadius = 100;
 
@@ -19,6 +21,14 @@ const minSpeed = 5;
 const maxSpeed = 50;
 
 const secondaryChance = 20;
+
+var windowResized = false;
+var globalResizeTimer = null;
+
+function calculateWindowSize() {
+    canvasWidth = canvas.width = window.innerWidth;
+    canvasHeight = canvas.height = window.innerHeight;
+}
 
 /**
  * Draws a circle with the given parameters.
@@ -41,9 +51,10 @@ function drawCircle( x, y, radius, color, alpha ) {
  */
 async function render() {
     let circleInfo = [];
+    var circleAmount = circleDensity * canvasWidth;
 
     // Randomly generate all circle parameters.
-    for ( let i = 0; i < 50; i++ ) {
+    for ( let i = 0; i < circleAmount; i++ ) {
         circleInfo[i] = [ rnd( 0, canvasWidth ), rnd( 0, canvasHeight ), rnd( minRadius, maxRadius ), primary, rnd( minOpacity, maxOpacity ) * 0.01, rnd( minSpeed, maxSpeed ) * 0.01 ];
         
         // Set 1 in secondaryChance of the circles to the website's accent color.
@@ -54,12 +65,13 @@ async function render() {
 
     while ( true ) {
         // Fill the background with the website's dark color.
+        ctx.globalAlpha = 1.0;
         ctx.fillStyle = bg;
         ctx.fillRect( 0, 0, canvasWidth, canvasHeight );
         ctx.lineWidth = 0;
 
         // Render each circle.
-        for ( let i = 0; i < 50; i++ ) {
+        for ( let i = 0; i < circleAmount; i++ ) {
             // Move circle back to bottom of the screen if it has floated out of view.
             if ( circleInfo[ i ][ 1 ] < -100 ) {
                 circleInfo[ i ][ 1 ] = canvasHeight + 100;
@@ -72,8 +84,22 @@ async function render() {
         }
 
         await new Promise( r => setTimeout( r, 10 ) );
+
+        if (windowResized) {
+            windowResized = false;
+            return;
+        }
     }
 };
+
+window.addEventListener('resize', async function(event) {
+    if(globalResizeTimer != null) window.clearTimeout(globalResizeTimer);
+    globalResizeTimer = window.setTimeout(function() {
+        calculateWindowSize();
+        windowResized = true;
+        render();
+    }, 200);
+}, true);
 
 document.body.appendChild( canvas );
 render();
