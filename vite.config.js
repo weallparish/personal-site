@@ -1,8 +1,5 @@
 // vite.config.js
 export default {
-  base: './',
-  build: {
-    assetsInlineLimit: 0
-  },
+  base: './personal-site/'
 };
 
