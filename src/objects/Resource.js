@@ -1,10 +1,10 @@
 class Resources {
     constructor() {
         this.toLoad = {
-            sky: "/sprites/sky.png",
-            ground: "/sprites/ground.png",
-            hero: "/sprites/tiny_eden.png",
-            shadow: "/sprites/hero_shadow.png"
+            sky: "../../public/sprites/sky.png",
+            ground: "../../public/sprites/ground.png",
+            hero: "../../public/sprites/tiny_eden.png",
+            shadow: "../../public/sprites/hero_shadow.png"
 
         };
 
