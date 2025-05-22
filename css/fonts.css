@@ -43,3 +43,13 @@
     color: var(--light);
     font-size: 20px;
 }
+
+.cascadia-code-paragraph b {
+    font-family: "Cascadia Code", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+
+    color: var(--secondary-main);
+    font-size: 20px;
+}

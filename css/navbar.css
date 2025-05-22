@@ -1,4 +1,10 @@
 .topnav {
+  display: flex;
+  justify-items: right;
+  top: 0;
+  right: 0;
+  width: 30%;
+  position: fixed;
   overflow: hidden;
 }
 
