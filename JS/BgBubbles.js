@@ -74,6 +74,11 @@ async function render() {
         for ( let i = 0; i < circleAmount; i++ ) {
             // Move circle back to bottom of the screen if it has floated out of view.
             if ( circleInfo[ i ][ 1 ] < -100 ) {
+                // circles have a very small chance to change to the secondary color when floating past the top.
+                if ( rnd( 0, 10 * secondaryChance - 1 ) == 0 ) {
+                    circleInfo[ i ][ 3 ] = secondary;
+                }
+
                 circleInfo[ i ][ 1 ] = canvasHeight + 100;
             }
 
