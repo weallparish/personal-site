@@ -1,4 +1,3 @@
-import '../css/portfolio.css'
 import { Camera } from './objects/Camera.js';
 import { GameLoop } from './GameLoop.js';
 import { GameObject } from './objects/GameObject.js';
