@@ -14,7 +14,7 @@
     font-weight: 600;
     font-style: normal;
 
-    color: var(--primary-main);
+    color: var(--secondary-main);
     font-size: 35px;
 }
 
@@ -24,14 +24,14 @@
     font-weight: 400;
     font-style: normal;
 
-    color: var(--secondary-main);
+    color: var(--primary-main);
     font-style: italic;
     font-size: 30px;
 }
 
 .cascadia-code-header a {
-    color: var(--secondary-main);
-    text-decoration-color: var(--secondary-main);
+    color: var(--primary-main);
+    text-decoration-color: var(--primary-main);
 }
 
 .cascadia-code-paragraph {

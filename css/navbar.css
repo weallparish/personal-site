@@ -24,12 +24,12 @@
 .topnav a:hover {
   text-decoration-line: underline;
   text-decoration-style: wavy;
-  text-decoration-color: var(--secondary-main);
+  text-decoration-color: var(--primary-main);
 }
 
 .topnav a.active {
   text-decoration-line: underline;
   text-decoration-style: wavy;
-  text-decoration-color: var(--primary-main);
+  text-decoration-color: var(--secondary-main);
   color: var(--light);
 }

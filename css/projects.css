@@ -5,6 +5,10 @@
     flex-direction: column;
 }
 
+.cascadia-code-header i {
+    color: var(--secondary-main);
+}
+
 .row {
     width: 60%;
     justify-self: center;
@@ -46,7 +50,7 @@
 
 .project .blurb {
     margin: 2px 15px;
-    font-size: 12px;
+    font-size: 15px;
     min-height: 100px;
 }
 
@@ -69,6 +73,7 @@
 
 .detailed-project.uncollapsed {
     border-top: 5px solid var(--secondary-main);
+    border-bottom: 5px solid var(--secondary-main);
     background-color: var(--dark-light);
     margin: 0% 5%;
     width: 60%;
@@ -85,16 +90,16 @@
 }
 
 .detailed-project img {
-    width: 100%;
+    width: 80%;
     aspect-ratio: 1/1;
-    margin: 25px;
+    margin: 5px;
     object-fit: cover;
     border: 10px solid var(--secondary-main);
     border-radius: 10px;
 }
 
 .detailed-project .row {
-    width: 80%;
+    width: auto;
     justify-self: center;
     margin-left: 5%;
     display: grid;
@@ -102,17 +107,30 @@
     gap: 1rem;
 }
 
-.detailed-project .header {
-    display: flex;
-    flex-direction: row;
-}
-
 .detailed-project .row p {
-    justify-self: left;
     width: 100%;
 }
 
-.detailed-project button {
+
+.detailed-project .row-alt {
+    width: auto;
+    justify-self: center;
+    margin-left: 5%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+}
+
+
+.detailed-project .header {
+    display: flex;
+    justify-content:space-between;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+.detailed-project .header button {
     background-color: var(--secondary-main);
     width: 40%;
     height: 5%;
