@@ -72,7 +72,7 @@
     background-color: var(--dark-light);
     margin: 0% 5%;
     width: 60%;
-    height: 300px;
+    height: 100%;
     border-radius: 10px;
     
 }
@@ -80,4 +80,42 @@
 .detailed-project .cascadia-code-header i{
     font-size: 30px;
     text-decoration: underline;
+    margin-right: 50px;
+    
+}
+
+.detailed-project img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    margin: 25px;
+    object-fit: cover;
+    border: 10px solid var(--secondary-main);
+    border-radius: 10px;
+}
+
+.detailed-project .row {
+    width: 80%;
+    justify-self: center;
+    margin-left: 5%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+}
+
+.detailed-project .header {
+    display: flex;
+    flex-direction: row;
+}
+
+.detailed-project .row p {
+    justify-self: left;
+    width: 100%;
+}
+
+.detailed-project button {
+    background-color: var(--secondary-main);
+    width: 40%;
+    height: 5%;
+    margin: 4%;
+    font-size: 15px;
 }

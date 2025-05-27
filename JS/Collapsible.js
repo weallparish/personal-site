@@ -28,6 +28,7 @@ for (var i = 0; i < buttons.length; i++) {
             if (buttonsToChange.length > 0) {
                 buttonsToChange[0].textContent = "Read More";
             }
+            
         }
 
         
