@@ -84,7 +84,7 @@ async function render() {
             }
 
             // Float the circle upwards.
-            circleInfo[ i ].y -= circleInfo[ i ][ 5 ];
+            circleInfo[ i ].y -= circleInfo[ i ].speed;
             
             drawCircle( circleInfo[i] );
         }
