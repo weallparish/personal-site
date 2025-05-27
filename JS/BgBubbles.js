@@ -1,3 +1,4 @@
+import { Bubble } from "./helpers/Bubble.js";
 import { rnd } from "./helpers/Math.js";
 
 var canvas = document.querySelector( 'canvas' );
@@ -38,11 +39,11 @@ function calculateWindowSize() {
  * @param {Color} color - color to fill circle.
  * @param {float} alpha - percent opacity.
  */
-function drawCircle( x, y, radius, color, alpha ) {
+function drawCircle( circle ) {
     ctx.beginPath();
-    ctx.arc(x, y, radius, 0, 2 * Math.PI);
-    ctx.globalAlpha = alpha;
-    ctx.fillStyle = color;
+    ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+    ctx.globalAlpha = circle.alpha;
+    ctx.fillStyle = circle.color;
     ctx.fill();
 }
 
@@ -55,11 +56,11 @@ async function render() {
 
     // Randomly generate all circle parameters.
     for ( let i = 0; i < circleAmount; i++ ) {
-        circleInfo[i] = [ rnd( 0, canvasWidth ), rnd( 0, canvasHeight ), rnd( minRadius, maxRadius ), primary, rnd( minOpacity, maxOpacity ) * 0.01, rnd( minSpeed, maxSpeed ) * 0.01 ];
+        circleInfo[i] = new Bubble(rnd(0, canvasWidth), rnd(0, canvasHeight), rnd(minRadius, maxRadius), primary, rnd(minOpacity,maxOpacity) * 0.01, rnd(minSpeed,maxSpeed) * 0.01)
         
         // Set 1 in secondaryChance of the circles to the website's accent color.
         if ( rnd( 0, secondaryChance - 1 ) == 0 ) {
-            circleInfo[ i ][ 3 ] = secondary;
+            circleInfo[ i ].color = secondary;
         }
     }
 
@@ -73,19 +74,19 @@ async function render() {
         // Render each circle.
         for ( let i = 0; i < circleAmount; i++ ) {
             // Move circle back to bottom of the screen if it has floated out of view.
-            if ( circleInfo[ i ][ 1 ] < -100 ) {
+            if ( circleInfo[ i ].y < -100 ) {
                 // circles have a very small chance to change to the secondary color when floating past the top.
                 if ( rnd( 0, 10 * secondaryChance - 1 ) == 0 ) {
-                    circleInfo[ i ][ 3 ] = secondary;
+                    circleInfo[ i ].color = secondary;
                 }
 
-                circleInfo[ i ][ 1 ] = canvasHeight + 100;
+                circleInfo[ i ].y = canvasHeight + 100;
             }
 
             // Float the circle upwards.
-            circleInfo[ i ][ 1 ] -= circleInfo[ i ][ 5 ];
+            circleInfo[ i ].y -= circleInfo[ i ][ 5 ];
             
-            drawCircle( circleInfo[ i ][ 0 ], circleInfo[ i ] [ 1 ], circleInfo[ i ][ 2 ], circleInfo[ i ][ 3 ], circleInfo[ i ][ 4 ] );
+            drawCircle( circleInfo[i] );
         }
 
         await new Promise( r => setTimeout( r, 10 ) );
