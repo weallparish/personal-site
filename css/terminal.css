@@ -1,10 +1,12 @@
 #terminal-text {
-    margin: 0 20px 20px 20px; /* Gives that scrolling effect as the typing happens */
+    bottom: 0;
+    position: absolute;
+    margin: 0 20px 20px 20px;
     font-family: "VT323";
     font-size: 30px;
     color: var(--primary-main);
-    animation: blur 30ms infinite, jerk 50ms infinite, jerkup 60ms infinite;
-    -webkit-animation: blur 30ms infinite, blur 30ms infinite, jerk 50ms infinite, jerkup 60ms infinite;
+    /* animation: blur 30ms infinite, jerkup 60ms infinite; */
+    -webkit-animation: blur 30ms infinite;
 }
 
 /* Animations */
@@ -13,14 +15,4 @@
     0%   { -webkit-filter: 1blur(1px); opacity:0.8;}
     50% { -webkit-filter: blur(1px); opacity:1; }
     100%{ -webkit-filter: blur(1px); opacity:0.8; }
-}
-
-@keyframes jerk {
-    50% { left:1px; }
-    51% { left:0; }
-}
-
-@keyframes jerkup {
-    50% { top:1px; }
-    51% { top:0; }
 }

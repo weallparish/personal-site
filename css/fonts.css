@@ -5,7 +5,9 @@
     font-style: normal;
 
     color: var(--light);
-    font-size: 30px;
+    font-size: 225%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .cascadia-code-header b {
@@ -15,7 +17,7 @@
     font-style: normal;
 
     color: var(--secondary-main);
-    font-size: 35px;
+    font-size: 110%;
 }
 
 .cascadia-code-header i {
@@ -41,7 +43,7 @@
     font-style: normal;
 
     color: var(--light);
-    font-size: 20px;
+    font-size: 150%;
 }
 
 .cascadia-code-paragraph b {
@@ -51,5 +53,5 @@
     font-style: normal;
 
     color: var(--secondary-main);
-    font-size: 20px;
+    font-size: 110%;
 }
