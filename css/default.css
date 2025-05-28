@@ -11,6 +11,7 @@ button {
     width: 105%;
     background-color: var(--secondary-main);
     color: var(--light);
+    transition: 0.5s;
 }
 
 button a {
@@ -20,6 +21,7 @@ button a {
 
 button:hover {
     background-color: var(--primary-main);
+    transition: 0.5s;
 }
 
 i {

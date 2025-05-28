@@ -25,6 +25,7 @@
   text-decoration-line: underline;
   text-decoration-style: wavy;
   text-decoration-color: var(--primary-main);
+  transition: 0.3s;
 }
 
 .topnav a.active {
