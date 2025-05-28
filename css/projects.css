@@ -95,6 +95,10 @@
     
 }
 
+.detailed-project .cascadia-code-paragraph {
+    font-size: 100%;
+}
+
 .detailed-project .cascadia-code-header i{
     font-size: 30px;
     border: 0px;
