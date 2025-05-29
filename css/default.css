@@ -29,6 +29,12 @@ i {
     color: var(--light);
     font-size: 200%;
     margin-right: 5px;
+    transition: 0.5s;
+}
+
+i:hover {
+    color: var(--primary-main);
+    transition: 0.5s;
 }
 
 #main {
