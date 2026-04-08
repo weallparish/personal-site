@@ -81,16 +81,6 @@ i:hover {
     grid-column-gap: 20px;
 }
 
-.scroll {
-    transform: translateY(30px);
-    opacity: 0;
-    transition: 1s;
-}
-.scroll--show {
-    transform: translateY(0px);
-    opacity: 1;
-}
-
 @keyframes swipe {
     0% {width: 0px;}
     100% {width: 90%;}

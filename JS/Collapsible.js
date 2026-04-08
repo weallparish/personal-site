@@ -26,7 +26,7 @@ for (var i = 0; i < buttons.length; i++) {
 
             let buttonsToChange = document.querySelectorAll("button.collapsible-" + j);
             if (buttonsToChange.length > 0) {
-                buttonsToChange[0].textContent = "Read More";
+                buttonsToChange[0].textContent = "Read More ->";
             }
             
         }
@@ -47,11 +47,11 @@ for (var i = 0; i < buttons.length; i++) {
             collapsiblesToClose[j].setAttribute("class",newClasses);
         }
 
-        if (event.target.textContent == "Read More") {
-            event.target.textContent = "Show Less";
+        if (event.target.textContent == "Read More ->") {
+            event.target.textContent = "Show Less <-";
         }
         else {
-            event.target.textContent = "Read More";
+            event.target.textContent = "Read More ->";
         }
     });
 }

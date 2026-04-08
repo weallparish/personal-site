@@ -1,0 +1,95 @@
+.project-card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    transition: 0.3s;
+    backdrop-filter: blur(10px) saturate(80%);
+
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 5%;
+    padding: 1% 1% 3% 1%;
+    border-bottom: 10px solid var(--secondary-main);
+}
+
+.project-card img {
+    width: 75%;
+    aspect-ratio: 1/1;
+    margin: 10px 25px 0px 25px;
+    object-fit: cover;
+    border: 10px solid var(--secondary-main);
+    border-radius: 10px;
+}
+
+.project-card h4 {
+    font-size: 100%;
+    text-align: center;
+    margin: 10px 0px 5px 0px;
+}
+
+.project-card p {
+    font-size: 90%;
+    margin: 0px 0px 10px 10px;
+}
+
+.project-card button {
+    display: block;
+    opacity: 0;
+    color: var(--secondary-main);
+    background: none;
+    text-align: center;
+    width: 40%;
+    margin: -5% auto;
+    font-size: 90%;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.project-card:hover button {
+    opacity: 0.7;
+    transition: 0.5s;
+    margin: 0 auto;
+}
+
+.project-card:hover button:hover {
+    opacity: 1;
+    transition: 0.5s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.project-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+}
+
+/* Add some padding inside the card container */
+.project-container {
+  padding: 2px 16px;
+}
+
+/* Style the tags */
+
+.tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px 0px 0px 0px;
+}
+
+.tag {
+    background-color: var(--primary-main);
+    color: var(--light);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 80%;
+    margin: 5px 5px;
+}
+
+.tag.complete {
+    background-color: var(--secondary-main);
+}
+
+.tag.game-dev {
+    background-color: purple;
+}
