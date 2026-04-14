@@ -93,3 +93,19 @@
 .tag.game-dev {
     background-color: purple;
 }
+
+.tag.software-dev {
+    background-color: red;
+}
+
+.tag.modding {
+    background-color: orange;
+}
+
+.tag.art {
+    background-color: magenta;
+}
+
+.tag.cplusplus {
+    background-color: blue;
+}
