@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const button = card.querySelector("button");
 
-    button.addEventListener("click", async () => {
+    card.addEventListener("click", async () => {
         modal.style.display = "block";
         const modal_src = button.getAttribute("data-src");
         const modal_body = document.getElementsByClassName("modal-body")[0];
