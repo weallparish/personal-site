@@ -1,11 +1,11 @@
 #terminal-text {
-    bottom: 0;
+    bottom: 20%;
     position: absolute;
     margin: 0 20px 20px 20px;
     font-size: 150%;
     color: var(--primary-main);
     /* animation: blur 30ms infinite, jerkup 60ms infinite; */
-    -webkit-animation: blur 30ms infinite;
+    /*-webkit-animation: blur 30ms infinite;*/
 }
 
 /* Animations */

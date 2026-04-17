@@ -1,110 +1,11 @@
-import { Bubble, bubbleManager } from "./helpers/Bubble.js";
-import { rnd } from "./helpers/Math.js";
+import { createBubbles, render } from "./helpers/RenderBubbles.js";
 
-var canvas = document.querySelector( 'canvas' );
-var canvasWidth = canvas.width = window.innerWidth;
-var canvasHeight = canvas.height = window.innerHeight;
-var ctx = canvas.getContext( '2d' );
-
-var bg = window.getComputedStyle( document.body ).getPropertyValue( "--dark" );
-var primary = window.getComputedStyle( document.body ).getPropertyValue( "--primary-main" );
-var secondary = window.getComputedStyle( document.body ).getPropertyValue( "--secondary-main" );
-
-const circleDensity = 0.05;
-
-const minRadius = 1;
-const maxRadius = 100;
-
-const minOpacity = 5;
-const maxOpacity = 50;
-
-const minSpeed = 5;
-const maxSpeed = 50;
-
-const secondaryChance = 20;
-
-var windowResized = false;
-var globalResizeTimer = null;
-
-function calculateWindowSize() {
-    canvasWidth = canvas.width = window.innerWidth;
-    canvasHeight = canvas.height = window.innerHeight;
-}
-
-/**
- * Draws a circle with the given parameters.
- * @param {float} x - x position of center of circle.
- * @param {float} y  - y position of center of circle.
- * @param {float} radius - radius of circle.
- * @param {Color} color - color to fill circle.
- * @param {float} alpha - percent opacity.
- */
-function drawCircle( circle ) {
-    ctx.beginPath();
-    ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-    ctx.globalAlpha = circle.alpha;
-    ctx.fillStyle = circle.color;
-    ctx.fill();
-}
-
-/**
- * Renders random circles on the screen and floats them upwards.
- */
-async function render() {
-    var circleAmount = circleDensity * canvasWidth;
-
-    // Randomly generate all circle parameters.
-    for ( let i = 0; i < circleAmount; i++ ) {
-        bubbleManager.add(new Bubble(rnd(0, canvasWidth), rnd(0, canvasHeight), rnd(minRadius, maxRadius), primary, rnd(minOpacity,maxOpacity) * 0.01, rnd(minSpeed,maxSpeed) * 0.01));
-        
-        // Set 1 in secondaryChance of the circles to the website's accent color.
-        if ( rnd( 0, secondaryChance - 1 ) == 0 ) {
-            bubbleManager.at(i).color = secondary;
-        }
-    }
-
-    while ( true ) {
-        // Fill the background with the website's dark color.
-        ctx.globalAlpha = 1.0;
-        ctx.fillStyle = bg;
-        ctx.fillRect( 0, 0, canvasWidth, canvasHeight );
-        ctx.lineWidth = 0;
-
-        // Render each circle.
-        for ( let i = 0; i < circleAmount; i++ ) {
-            // Move circle back to bottom of the screen if it has floated out of view.
-            if ( bubbleManager.at(i).y < -100 ) {
-                // circles have a very small chance to change to the secondary color when floating past the top.
-                if ( rnd( 0, 10 * secondaryChance - 1 ) == 0 ) {
-                    bubbleManager.at(i).color = secondary;
-                }
-
-                bubbleManager.at(i).y = canvasHeight + 100;
-            }
-
-            // Float the circle upwards.
-            bubbleManager.at(i).y -= bubbleManager.at(i).speed;
-            
-            drawCircle( bubbleManager.at(i) );
-        }
-
-        await new Promise( r => setTimeout( r, 10 ) );
-
-        if (windowResized) {
-            windowResized = false;
-            return;
-        }
-    }
-};
-
-window.addEventListener('resize', async function(event) {
-    if(globalResizeTimer != null) window.clearTimeout(globalResizeTimer);
-    globalResizeTimer = window.setTimeout(function() {
-        calculateWindowSize();
-        windowResized = true;
+async function renderLoop() {
+    while (true) {
         render();
-    }, 200);
-}, true);
+        await new Promise( r => setTimeout( r, 10 ) );
+    }
+}
 
-document.body.appendChild( canvas );
-render();
+createBubbles();
+renderLoop();
