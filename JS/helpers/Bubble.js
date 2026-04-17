@@ -1,13 +1,14 @@
 import { rnd } from "./Math.js";
 
 export class Bubble {
-    constructor(x = 0, y = 0, radius = 1, color = "blue", alpha = 0.1, speed = 0.1) {
+    constructor(x = 0, y = 0, radius = 1, color = "blue", alpha = 0.1, speed = 0.1, type="normal") {
         this.x = x;
         this.y = y;
         this.radius = radius;
         this.color = color;
         this.alpha = alpha;
         this.speed = speed;
+        this.type = type;
     }
     wasClicked(clickX, clickY) {
         let dx = clickX - this.x;
@@ -44,12 +45,13 @@ class BubbleManager {
     clear() {
         this.bubbles = [];
     }
-    add(width, height) {
-        let b = new Bubble(rnd(0, width), rnd(0, height), rnd(this.minRadius, this.maxRadius), this.primary, rnd(this.minOpacity,this.maxOpacity) * 0.01, rnd(this.minSpeed,this.maxSpeed) * 0.01)
+    add(width, height, color = this.primary, type="normal") {
+        let b = new Bubble(rnd(0, width), rnd(0, height), rnd(this.minRadius, this.maxRadius), color, rnd(this.minOpacity,this.maxOpacity) * 0.01, rnd(this.minSpeed,this.maxSpeed) * 0.01, type);
         this.bubbles.push(b)
 
         if (rnd(0, this.secondaryChance) == 0) {
             b.color = this.secondary;
+            b.type = "normal";
         }
     }
     at(i) {
@@ -67,11 +69,14 @@ class BubbleManager {
             this.bubbles.splice(this.bubbles.indexOf(b), 1);
         })
     }
-    clickBubbles(clickX, clickY, clickEffect) {
+    clickBubbles(clickX, clickY, clickEffect, clickFilter="normal") {
         this.bubbles.forEach(b => {
-            if (b.wasClicked(clickX, clickY)) {
-                clickEffect(b);
+            if (b.type == clickFilter) {
+                if (b.wasClicked(clickX, clickY)) {
+                    clickEffect(b);
+                }
             }
+            
         })
     }
     renderBubbles(ctx, renderer) {
@@ -79,9 +84,10 @@ class BubbleManager {
             b.renderBubble(ctx, renderer);
         })
     }
-    simulateBubbles(simulator) {
+    simulateBubbles(simulator, type="normal") {
         this.bubbles.forEach(b => {
-            b.simulateBubble(simulator);
+            if (b.type == type)
+                b.simulateBubble(simulator);
         })
     }
 }

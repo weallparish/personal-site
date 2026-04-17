@@ -20,8 +20,8 @@ button a {
 }
 
 button:hover {
-    background-color: var(--primary-main);
-    transition: 0.5s;
+    box-shadow: 0 4px 8px 0 var(--secondary-main);
+    transition: 0.3s;
 }
 
 i {
@@ -29,17 +29,18 @@ i {
     color: var(--light);
     font-size: 200%;
     margin-right: 5px;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
 i:hover {
-    color: var(--primary-main);
-    transition: 0.5s;
+    color: var(--secondary-main);
+    transition: 0.3s;
 }
 
 #main {
     display: flex;
     height: 100%;
+    width: 60%;
     margin: 7% 3%;
     align-content: center;
 }

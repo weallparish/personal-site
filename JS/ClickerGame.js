@@ -5,10 +5,10 @@ import { ClickerShop } from "./helpers/ClickerShop.js";
 function handleClick(event) {
     const x = event.clientX;
     const y = event.clientY;
-    bubbleManager.clickBubbles(x, y, b => {b.radius = 0; updateCounter(1)});
+    bubbleManager.clickBubbles(x, y, b => {b.radius = 0; updateBubblesPopped(1)});
 }
 
-function updateCounter(amt = 0) {
+function updateBubblesPopped(amt = 0) {
     bubblesPopped = Number(localStorage.getItem("bubblesPopped") || 0)
     bubblesPopped += amt;
     localStorage.setItem("bubblesPopped", bubblesPopped);
@@ -29,34 +29,68 @@ function showHiddenElements() {
 function shopPurchase(shopText, shopItem) {
 
     if (bubblesPopped >= shopItem.getCost()) {
-        updateCounter(-1 * shopItem.getCost());
-        shopItem.setCost(shopItem.getCost() * 2);
-        addBubbleGenerator(shopText, shopItem);
+        updateBubblesPopped(-1 * shopItem.getCost());
+        shopItem.setCost(shopItem.getCost() * 1.5);
+        shopText.textContent = shopItem.shopName + " - " + shopItem.getCost() + " Bubbles";
+
+        switch(shopItem.shopType) {
+            case "bubbleGenerator":
+                addBubbleGenerator();
+                break;
+            case "bubbleDestroyer":
+                addBubbleDestroyer();
+                break;
+        }
     }
 }
 
-function addBubbleGenerator(shopText, shopItem) {
-    shopText.textContent = "Bubble Generator - " + shopItem.getCost() + " Bubbles";
+function addBubbleGenerator() {
     bubbleGenerators++;
     localStorage.setItem("bubbleGenerators", bubbleGenerators);
 }
 
+function addBubbleDestroyer() {
+    bubbleDestroyers++;
+    localStorage.setItem("bubbleDestroyers", bubbleDestroyers);
+}
+
 async function gameLoop() {
     while(true) {
-        await new Promise( r => setTimeout( r, 10000) );
+        date = new Date();
+        let currTime = date.getTime();
 
-        for (let i = 0; i < bubbleGenerators; i++) {
-            bubbleManager.add(canvasWidth, canvasHeight);
-            await new Promise( r => setTimeout(r, 100));
+        // Logic that should only occur every 10 seconds.
+        if (currTime - time >= 10000) {
+            for (let i = 0; i < bubbleGenerators; i++) {
+                bubbleManager.add(canvasWidth, canvasHeight);
+                time = currTime;
+            }
+            
+            for (let i = 0; i < bubbleDestroyers; i++) {
+                bubbleManager.add(canvasWidth, canvasHeight, "red", "anti");
+            }
         }
         
-        
+        // Logic that should occur every tick.
+        bubbleManager.simulateBubbles(a => {
+            if (a.y > canvasHeight + 100) {
+                a.y = -100;
+            }
+            a.y += a.speed;
+            bubbleManager.clickBubbles(a.x, a.y, b => {a.radius = 0; b.radius = 0; updateBubblesPopped(1)});
+        }, "anti");
+
+        await new Promise (r => setTimeout(r, 10));
     }
 }
 
 // Set up game logic
+var date = new Date();
+var time = date.getTime();
+
 var bubblesPopped = Number(localStorage.getItem("bubblesPopped") || 0);
 var bubbleGenerators = Number(localStorage.getItem("bubbleGenerators") || 0);
+var bubbleDestroyers = Number(localStorage.getItem("bubbleDestroyers") || 0);
 
 var canvas = document.querySelector( 'canvas' );
 canvas.addEventListener("click", handleClick);
@@ -79,7 +113,7 @@ var shopItems = [];
 shopElements.forEach(e => {
     const shop = new ClickerShop(e);
     shopItems.push(shop);
-    e.textContent = "Bubble Generator - " + shop.getCost() + " Bubbles";
+    e.textContent = shop.shopName + " - " + shop.getCost() + " Bubbles";
     e.addEventListener("click", () => 
         {shopPurchase(e, shop);});
 });
@@ -89,6 +123,7 @@ resetDataButton.addEventListener("click", () => {
     localStorage.removeItem("bubblesPopped");
     localStorage.removeItem("bubbleCount");
     localStorage.removeItem("bubbleGenerators");
+    localStorage.removeItem("bubbleDestroyers");
 
     shopElements.forEach(e => {
         localStorage.removeItem(e.getAttribute("data-name") + "Cost");
@@ -98,7 +133,7 @@ resetDataButton.addEventListener("click", () => {
 });
 
 if (bubblesPopped > 0) {
-    updateCounter();
+    updateBubblesPopped();
     showHiddenElements();
 }
 
