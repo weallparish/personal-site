@@ -18,11 +18,6 @@
     flex-direction: row;
     column-gap: 1.5rem;
     max-height: 50px;
-
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
-    transition: 0.3s;
-    backdrop-filter: blur(10px) saturate(80%);
-    padding: 0.5rem 1rem;
 }
 
 .filters .tag {

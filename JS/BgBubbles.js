@@ -1,4 +1,4 @@
-import { Bubble } from "./helpers/Bubble.js";
+import { Bubble, bubbleManager } from "./helpers/Bubble.js";
 import { rnd } from "./helpers/Math.js";
 
 var canvas = document.querySelector( 'canvas' );
@@ -51,16 +51,15 @@ function drawCircle( circle ) {
  * Renders random circles on the screen and floats them upwards.
  */
 async function render() {
-    let circleInfo = [];
     var circleAmount = circleDensity * canvasWidth;
 
     // Randomly generate all circle parameters.
     for ( let i = 0; i < circleAmount; i++ ) {
-        circleInfo[i] = new Bubble(rnd(0, canvasWidth), rnd(0, canvasHeight), rnd(minRadius, maxRadius), primary, rnd(minOpacity,maxOpacity) * 0.01, rnd(minSpeed,maxSpeed) * 0.01)
+        bubbleManager.add(new Bubble(rnd(0, canvasWidth), rnd(0, canvasHeight), rnd(minRadius, maxRadius), primary, rnd(minOpacity,maxOpacity) * 0.01, rnd(minSpeed,maxSpeed) * 0.01));
         
         // Set 1 in secondaryChance of the circles to the website's accent color.
         if ( rnd( 0, secondaryChance - 1 ) == 0 ) {
-            circleInfo[ i ].color = secondary;
+            bubbleManager.at(i).color = secondary;
         }
     }
 
@@ -74,19 +73,19 @@ async function render() {
         // Render each circle.
         for ( let i = 0; i < circleAmount; i++ ) {
             // Move circle back to bottom of the screen if it has floated out of view.
-            if ( circleInfo[ i ].y < -100 ) {
+            if ( bubbleManager.at(i).y < -100 ) {
                 // circles have a very small chance to change to the secondary color when floating past the top.
                 if ( rnd( 0, 10 * secondaryChance - 1 ) == 0 ) {
-                    circleInfo[ i ].color = secondary;
+                    bubbleManager.at(i).color = secondary;
                 }
 
-                circleInfo[ i ].y = canvasHeight + 100;
+                bubbleManager.at(i).y = canvasHeight + 100;
             }
 
             // Float the circle upwards.
-            circleInfo[ i ].y -= circleInfo[ i ].speed;
+            bubbleManager.at(i).y -= bubbleManager.at(i).speed;
             
-            drawCircle( circleInfo[i] );
+            drawCircle( bubbleManager.at(i) );
         }
 
         await new Promise( r => setTimeout( r, 10 ) );

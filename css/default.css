@@ -81,6 +81,18 @@ i:hover {
     grid-column-gap: 20px;
 }
 
+.social-links {
+    width: fit-content;
+}
+
+.transparent-box {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px) saturate(80%);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+}
+
+
 @keyframes swipe {
     0% {width: 0px;}
     100% {width: 90%;}
@@ -89,4 +101,12 @@ i:hover {
 @keyframes swipe-down {
     0% {height: 0px;}
     100% {height: 100%;}
+}
+
+.ignore-clicks {
+    pointer-events: none;
+}
+
+.register-clicks {
+    pointer-events: auto;
 }

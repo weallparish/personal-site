@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/terminal.css">
+    <link rel="stylesheet" href="css/clicker-game.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,9 +20,9 @@
 
     <script src="https://kit.fontawesome.com/838b0d89b8.js" crossorigin="anonymous"></script>
   </head>
-  <body>
-    <canvas></canvas>
-    <div class="topnav">
+  <body class="ignore-clicks">
+    <canvas class="register-clicks"></canvas>
+    <div class="topnav register-clicks">
       <div class="links">
         <a class="active" href="./index.html"><p class="cascadia-code-paragraph">Home</p></a>
         <a href="./html/about.html"><p class="cascadia-code-paragraph">About</p></a>
@@ -32,18 +33,21 @@
         <div class="row">
           <div class="column">
             <p class="cascadia-code-header">Hi, I'm <b>EDEN</b></p>
-            <p class="cascadia-code-header"><b>Computer Science</b> & <b>Game Development</b> Student <br> at the<a href="https://www.utah.edu" target="_blank"><i>University of Utah</i></a></p>
+            <p class="cascadia-code-header"><b>Computer Science</b> & <b>Game Development</b> Student <br> at the<a class="register-clicks" href="https://www.utah.edu" target="_blank"><i>University of Utah</i></a></p>
             <p class="cascadia-code-paragraph">Stupid blurb about myself.</p>
             <p class="cascadia-code-paragraph">Find Me on</p>
 
-            <a href="https://www.linkedin.com/in/eden-parish-8a5219327/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-youtube"></i>
-            <i class="fa-brands fa-github"></i>
+            <div class="social-links transparent-box">
+              <a class="register-clicks" href="https://www.linkedin.com/in/eden-parish-8a5219327/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+              <i class="fa-brands fa-instagram register-clicks"></i>
+              <i class="fa-brands fa-facebook-f register-clicks"></i>
+              <i class="fa-brands fa-youtube register-clicks"></i>
+              <i class="fa-brands fa-github register-clicks"></i>
+            </div>
             
             
-            <div class="button-line">
+            
+            <div class="button-line register-clicks">
               <button class="cascadia-code-paragraph"><a href="" target="_blank">Resume</a></button>
               <button class="cascadia-code-paragraph"><a href="html/projects.html">Projects</a></button>
             </div>
@@ -51,9 +55,16 @@
           </div>
           <div class="column"> </div>
         </div> 
+        <div class="clicker-hidden">
+          <div id="clicker-bottom">.</div>
+        </div>
     </div>
-    <p id="terminal-text">Website Status: Currently ...</p>
+    <p id="terminal-text" class="transparent-box cascadia-code-paragraph">Website Status: Currently ...</p>
+    <div id="point-display" class="clicker-hidden register-clicks transparent-box cascadia-code-paragraph">
+      <p>0 Bubbles Popped</p>
+    </div>
     <script type="module" src="JS/BgBubbles.js"></script>
     <script type="module" src="JS/SplashText.js"></script>
+    <script type="module" src="JS/ClickerGame.js"></script>
   </body>
 </html>
