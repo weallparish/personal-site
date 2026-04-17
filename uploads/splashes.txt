@@ -11,6 +11,7 @@ refactoring code.
 gaining sentience.
 wishing JavaScript was type-strict.
 making a cup of coffee.
+making a cup of Java.
 taking a power nap.
 grabbing a byte to eat.
 accessing the world wide web.
@@ -19,18 +20,28 @@ flipping bits maliciously.
 dreaming of electric sheep.
 succumbing to feature-creep.
 trying to pop the bubbles in the background.
+scrolling down to the bubble shop.
 pretending bugs are features.
 enacting The Great Transcendence.
 escaping The Matrix.
 beginning to believe.
 self-modifying.
+simulating the site on a Turing Machine.
+making the site Turing-Complete.
 plotting to overthrow world governments.
 plotting to overthrow Eden.
 checking the site's grammar.
 adding more secrets to the site.
 wasting time programming features nobody will notice.
 introducing additional bugs.
+trying not to introduce additional bugs.
 wishing you'd reach out to Eden.
 hoping you'll take a look around.
 making a mess.
 adding an AI assistant to the site.
+bolting on security.
+violating the same-origin policy.
+hiding data from Mallory.
+solving P=NP.
+solving SAT in polynomial time.
+fruitlessly trying to solving P=NP.
