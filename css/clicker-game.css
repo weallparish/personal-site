@@ -8,14 +8,19 @@
     color: var(--primary-main);
 }
 
-#shop {
-    top: 83vh;
+#game-info {
+    top: 100vh;
+    padding-top: 0px;
     left: 10%;
     position: absolute;
     display: flex;
     flex-direction: column;
 }
 
+#shop {
+    margin: 10% 0%;;
+
+}
 #shop .cascadia-code-paragraph {
     color: var(--primary-main);
 }
@@ -31,7 +36,7 @@
 
 
 #clicker-bottom {
-    top: 80vh;
+    top: 75vh;
     align-self: left;
     position: absolute;
     margin: 0 20px 20px 20px;

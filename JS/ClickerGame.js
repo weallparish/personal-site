@@ -13,7 +13,7 @@ function updateBubblesPopped(amt = 0) {
     bubblesPopped += amt;
     localStorage.setItem("bubblesPopped", bubblesPopped);
 
-    pointDisplay.textContent = bubblesPopped > 1 ? bubblesPopped + " Bubbles Popped" : bubblesPopped + " Bubble Popped";
+    pointDisplay.textContent = bubblesPopped != 1 ? bubblesPopped + " Bubbles Popped" : bubblesPopped + " Bubble Popped";
 
     if (bubblesPopped > 0) {
         showHiddenElements();
@@ -42,6 +42,15 @@ function shopPurchase(shopText, shopItem) {
                 break;
         }
     }
+    statElements.forEach(e => {
+        updateStat(e);
+    })
+}
+
+function updateStat(statText) {
+    const statName = statText.getAttribute("data-name");
+    const statDescription = statText.getAttribute("data-name-readable");
+    statText.textContent = statDescription + ": " + (localStorage.getItem(statName) || 0);
 }
 
 function addBubbleGenerator() {
@@ -117,6 +126,11 @@ shopElements.forEach(e => {
     e.addEventListener("click", () => 
         {shopPurchase(e, shop);});
 });
+
+var statElements = document.querySelectorAll(".stat-element");
+statElements.forEach(e => {
+    updateStat(e);
+})
 
 var resetDataButton = document.getElementById("clicker-bottom");
 resetDataButton.addEventListener("click", () => {
