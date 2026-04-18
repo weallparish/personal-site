@@ -1,7 +1,7 @@
 import { rnd } from "./Math.js";
 
 export class Bubble {
-    constructor(x = 0, y = 0, radius = 1, color = "blue", alpha = 0.1, speed = 0.1, type="normal") {
+    constructor(x = 0, y = 0, radius = 1, color = "blue", alpha = 0.1, speed = 0.1, type="normal", angle = 0) {
         this.x = x;
         this.y = y;
         this.radius = 0;
@@ -10,6 +10,7 @@ export class Bubble {
         this.alpha = alpha;
         this.speed = speed;
         this.type = type;
+        this.angle = angle;
     }
     wasClicked(clickX, clickY) {
         let dx = clickX - this.x;
@@ -46,11 +47,11 @@ class BubbleManager {
     clear() {
         this.bubbles = [];
     }
-    add(width, height, color = this.primary, type="normal") {
-        let b = new Bubble(rnd(0, width), rnd(0, height), rnd(this.minRadius, this.maxRadius), color, rnd(this.minOpacity,this.maxOpacity) * 0.01, rnd(this.minSpeed,this.maxSpeed) * 0.01, type);
+    add(width, height, color = this.primary, type="normal", x=0, y=0, angle=0) {
+        let b = new Bubble(x == 0 ? rnd(0, width) : x, y == 0? rnd(0, height) : y, rnd(this.minRadius, this.maxRadius), color, rnd(this.minOpacity,this.maxOpacity) * 0.01, rnd(this.minSpeed,this.maxSpeed) * 0.01, type, angle);
         this.bubbles.push(b)
 
-        if (rnd(0, this.secondaryChance) == 0) {
+        if (type=="normal" && rnd(0, this.secondaryChance) == 0) {
             b.color = this.secondary;
             b.type = "normal";
         }

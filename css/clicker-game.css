@@ -10,17 +10,23 @@
 
 #game-info {
     top: 100vh;
+    width: 75%;
     padding-top: 0px;
     left: 10%;
     position: absolute;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+#stats {
+    height: fit-content;
 }
 
 #shop {
-    margin: 10% 0%;;
+    margin: 0 10%;;
 
 }
+
 #shop .cascadia-code-paragraph {
     color: var(--primary-main);
 }

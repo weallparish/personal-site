@@ -90,9 +90,6 @@ export function render() {
 
     bubbleManager.simulateBubbles(b => {
         if (b.y < -100) {
-            if ( rnd( 0, 10 * bubbleManager.secondaryChance - 1 ) == 0 ) {
-                b.color = bubbleManager.secondary;
-            }
             b.y = canvasHeight + 100;
         }
         b.y -= b.speed;
@@ -100,9 +97,20 @@ export function render() {
         if (b.alpha > 0) {
             b.radius += 2;
             b.alpha -= 0.1 * b.alpha;
+            bubbleManager.add(canvasWidth, canvasHeight, b.color, "particle", b.x, b.y, rnd(0, 360));
         }
             
     }, "popping");
+
+    bubbleManager.simulateBubbles(b => {
+        b.y -= Math.sin(b.angle)*b.speed*5 + b.speed*5;
+        b.x -= Math.cos(b.angle)*b.speed*5;
+
+        if (b.alpha > 0) {
+            b.alpha -= 0.1 * b.alpha;
+        }
+            
+    }, "particle");
 
     bubbleManager.renderBubbles(ctx, drawCircle);
 
