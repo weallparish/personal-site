@@ -108,6 +108,7 @@ export function render() {
 
         if (b.alpha > 0) {
             b.alpha -= 0.1 * b.alpha;
+            b.radius += 0.1;
         }
             
     }, "particle");
