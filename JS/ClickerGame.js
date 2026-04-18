@@ -5,10 +5,13 @@ import { ClickerShop } from "./helpers/ClickerShop.js";
 function handleClick(event) {
     const x = event.clientX;
     const y = event.clientY;
-    bubbleManager.clickBubbles(x, y, b => {b.radius = 0; updateBubblesPopped(1)});
+    bubbleManager.clickBubbles(x, y, b => {
+        b.type = "popping";
+        updateBubblesPopped(1)
+    });
 }
 
-function updateBubblesPopped(amt = 0) {
+export function updateBubblesPopped(amt = 0) {
     bubblesPopped = Number(localStorage.getItem("bubblesPopped") || 0)
     bubblesPopped += amt;
     localStorage.setItem("bubblesPopped", bubblesPopped);
@@ -69,34 +72,40 @@ async function gameLoop() {
         let currTime = date.getTime();
 
         // Logic that should only occur every 10 seconds.
-        if (currTime - time >= 10000) {
+        if (currTime - time > 10000) {
             for (let i = 0; i < bubbleGenerators; i++) {
                 bubbleManager.add(canvasWidth, canvasHeight);
-                time = currTime;
+                await new Promise (r => setTimeout(r, 50));
             }
             
             for (let i = 0; i < bubbleDestroyers; i++) {
-                bubbleManager.add(canvasWidth, canvasHeight, "red", "anti");
+                bubbleManager.add(canvasWidth, canvasHeight, window.getComputedStyle( document.body ).getPropertyValue( "--primary-light" ), "anti");
+                await new Promise (r => setTimeout(r, 50));
             }
+
+            time = currTime;
         }
-        
+
+
         // Logic that should occur every tick.
         bubbleManager.simulateBubbles(a => {
-            if (a.y > canvasHeight + 100) {
-                a.y = -100;
+            if (a.type == "anti") {
+                bubbleManager.clickBubbles(a.x, a.y, b => {
+                a.type = "popping"; 
+                b.type = "popping"; 
+                updateBubblesPopped(1)});
             }
-            a.y += a.speed;
-            bubbleManager.clickBubbles(a.x, a.y, b => {a.radius = 0; b.radius = 0; updateBubblesPopped(1)});
         }, "anti");
-
+        
+        
         await new Promise (r => setTimeout(r, 10));
+        
     }
 }
 
 // Set up game logic
 var date = new Date();
 var time = date.getTime();
-
 var bubblesPopped = Number(localStorage.getItem("bubblesPopped") || 0);
 var bubbleGenerators = Number(localStorage.getItem("bubbleGenerators") || 0);
 var bubbleDestroyers = Number(localStorage.getItem("bubbleDestroyers") || 0);

@@ -50,7 +50,7 @@ export function createBubbles() {
  */
 export function render() {
     // Delete all popped bubbles from manager
-    bubbleManager.prune(b => {return b.radius == 0});
+    bubbleManager.prune(b => {return b.alpha < 0.05});
     if (bubbleManager.count() > 0) {
         localStorage.setItem("bubbleCount", bubbleManager.count());
     }
@@ -70,7 +70,39 @@ export function render() {
             b.y = canvasHeight + 100;
         }
         b.y -= b.speed;
+
+        if (b.radius < b.maxRadius) {
+            b.radius += 3;
+        }
     });
+
+    bubbleManager.simulateBubbles(a => {
+        if (a.y > canvasHeight + 100) {
+            a.y = -100;
+        }
+        a.y += a.speed;
+
+        if (a.radius < a.maxRadius) {
+            a.radius += 2;
+        }
+    }, "anti");
+
+
+    bubbleManager.simulateBubbles(b => {
+        if (b.y < -100) {
+            if ( rnd( 0, 10 * bubbleManager.secondaryChance - 1 ) == 0 ) {
+                b.color = bubbleManager.secondary;
+            }
+            b.y = canvasHeight + 100;
+        }
+        b.y -= b.speed;
+
+        if (b.alpha > 0) {
+            b.radius += 2;
+            b.alpha -= 0.1 * b.alpha;
+        }
+            
+    }, "popping");
 
     bubbleManager.renderBubbles(ctx, drawCircle);
 

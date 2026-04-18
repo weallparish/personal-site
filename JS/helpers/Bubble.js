@@ -4,7 +4,8 @@ export class Bubble {
     constructor(x = 0, y = 0, radius = 1, color = "blue", alpha = 0.1, speed = 0.1, type="normal") {
         this.x = x;
         this.y = y;
-        this.radius = radius;
+        this.radius = 0;
+        this.maxRadius = radius;
         this.color = color;
         this.alpha = alpha;
         this.speed = speed;
@@ -27,7 +28,7 @@ export class Bubble {
 class BubbleManager {
     constructor() {
         this.bubbles = [];
-        this.minRadius = 1;
+        this.minRadius = 5;
         this.maxRadius = 100;
 
         this.minOpacity = 5;
