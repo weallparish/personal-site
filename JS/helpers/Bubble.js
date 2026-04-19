@@ -11,6 +11,7 @@ export class Bubble {
         this.speed = speed;
         this.type = type;
         this.angle = angle;
+        this.bubblesSummoned = 0;
     }
     wasClicked(clickX, clickY) {
         let dx = clickX - this.x;
@@ -42,6 +43,8 @@ class BubbleManager {
 
         this.primary = window.getComputedStyle( document.body ).getPropertyValue( "--primary-main" );
         this.secondary = window.getComputedStyle( document.body ).getPropertyValue( "--secondary-main" );
+
+        this.bubblesOnPop = 0;
 
     }
     clear() {

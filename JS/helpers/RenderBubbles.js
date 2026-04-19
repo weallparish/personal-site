@@ -97,18 +97,23 @@ export function render() {
         if (b.alpha > 0) {
             b.radius += 2;
             b.alpha -= 0.1 * b.alpha;
-            bubbleManager.add(canvasWidth, canvasHeight, b.color, "particle", b.x, b.y, rnd(0, 360));
+            console.log(bubbleManager.bubblesOnPop);
+            if (b.bubblesSummoned < bubbleManager.bubblesOnPop) {
+                b.bubblesSummoned += 1;
+                bubbleManager.add(canvasWidth, canvasHeight, b.color, "particle", b.x, b.y, rnd(0, 360));
+            }
+                
         }
             
     }, "popping");
 
     bubbleManager.simulateBubbles(b => {
-        b.y -= Math.sin(b.angle)*b.speed*5 + b.speed*5;
-        b.x -= Math.cos(b.angle)*b.speed*5;
+        b.y -= Math.sin(b.angle)*b.speed*10 + b.speed*5;
+        b.x -= Math.cos(b.angle)*b.speed*10;
 
         if (b.alpha > 0) {
-            b.alpha -= 0.1 * b.alpha;
-            b.radius += 0.1;
+            b.alpha -= 0.05 * b.alpha;
+            b.radius += 0.5;
         }
             
     }, "particle");

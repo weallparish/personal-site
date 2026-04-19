@@ -72,6 +72,7 @@ function addBubbleDestroyer() {
 function addBubblePerClick() {
     bubblesPerClick++;
     localStorage.setItem("bubblesPerClick", bubblesPerClick);
+    bubbleManager.bubblesOnPop++;
 }
 
 async function gameLoop() {
@@ -100,10 +101,6 @@ async function gameLoop() {
             b.type = "popping"; 
             updateBubblesPopped(bubblesPerClick)});
         }, "anti");
-
-        bubbleManager.simulateBubbles(b => {
-            b.radius += 0.1 * (bubblesPerClick - 1);
-        }, "particle");
         
         
         await new Promise (r => setTimeout(r, 10));
@@ -118,6 +115,7 @@ var bubblesPopped = Number(localStorage.getItem("bubblesPopped") || 0);
 var bubbleGenerators = Number(localStorage.getItem("bubbleGenerators") || 0);
 var bubbleDestroyers = Number(localStorage.getItem("bubbleDestroyers") || 0);
 var bubblesPerClick = Number(localStorage.getItem("bubblesPerClick") || 1);
+bubbleManager.bubblesOnPop = Number(localStorage.getItem("bubblesPerClick") - 1|| 0);
 
 var canvas = document.querySelector( 'canvas' );
 canvas.addEventListener("click", handleClick);
