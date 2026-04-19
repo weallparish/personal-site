@@ -80,15 +80,13 @@ async function gameLoop() {
         let currTime = date.getTime();
 
         // Logic that should only occur every 5 seconds.
-        if (currTime - time > 5000) {
+        if (currTime - time > 10000) {
             for (let i = 0; i < bubbleGenerators; i++) {
                 bubbleManager.add(canvasWidth, canvasHeight);
-                await new Promise (r => setTimeout(r, 50));
             }
             
             for (let i = 0; i < bubbleDestroyers; i++) {
                 bubbleManager.add(canvasWidth, canvasHeight, window.getComputedStyle( document.body ).getPropertyValue( "--primary-light" ), "anti");
-                await new Promise (r => setTimeout(r, 50));
             }
 
             time = currTime;
