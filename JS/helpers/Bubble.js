@@ -34,7 +34,7 @@ class BubbleManager {
         this.maxRadius = 100;
 
         this.minOpacity = 5;
-        this.maxOpacity = 50;
+        this.maxOpacity = 30;
 
         this.minSpeed = 5;
         this.maxSpeed = 50;
@@ -46,13 +46,20 @@ class BubbleManager {
 
         this.bubblesOnPop = 0;
 
+        this.bubbleCounts = {};
+
     }
     clear() {
         this.bubbles = [];
     }
-    add(width, height, color = this.primary, type="normal", x=0, y=0, angle=0) {
-        let b = new Bubble(x == 0 ? rnd(0, width) : x, y == 0? rnd(0, height) : y, rnd(this.minRadius, this.maxRadius), color, rnd(this.minOpacity,this.maxOpacity) * 0.01, rnd(this.minSpeed,this.maxSpeed) * 0.01, type, angle);
+    add({x=null, y=null, width=0, height=0, color = this.primary, angle=0, type="normal"}) {
+        let b = new Bubble(x == null ? rnd(0, width) : x, y == null? rnd(0, height) : y, rnd(this.minRadius, this.maxRadius), color, rnd(this.minOpacity,this.maxOpacity) * 0.01, rnd(this.minSpeed,this.maxSpeed) * 0.01, type, angle);
         this.bubbles.push(b)
+
+        if (this.bubbleCounts[type] == undefined) {
+            this.bubbleCounts[type] = 0;
+        }
+        this.bubbleCounts[type]++;
 
         if (type=="normal" && rnd(0, this.secondaryChance) == 0) {
             b.color = this.secondary;
@@ -68,7 +75,10 @@ class BubbleManager {
     prune(condition) {
         let toDelete = [];
         this.bubbles.forEach(b => {
-            if (condition(b)) toDelete.push(b);
+            if (condition(b)) {
+                this.bubbleCounts[b.type]--;
+                toDelete.push(b);
+            }
         })
         toDelete.forEach(b => {
             this.bubbles.splice(this.bubbles.indexOf(b), 1);

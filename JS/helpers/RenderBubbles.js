@@ -36,12 +36,23 @@ function drawCircle( ctx, circle ) {
 }
 
 export function createBubbles() {
-    var circleAmount = Number(localStorage.getItem("bubbleCount") || circleDensity * canvasWidth);
+    var normalBubbleAmount = Number(localStorage.getItem("normalBubbleCount") || circleDensity * canvasWidth);
+    var antiBubbleAmount = Number(localStorage.getItem("antiBubbleCount") || circleDensity * canvasWidth);
+    console.log(normalBubbleAmount + ", " + antiBubbleAmount);
     bubbleManager.clear();
 
     // Randomly generate all circle parameters.
-    for ( let i = 0; i < circleAmount; i++ ) {
-        bubbleManager.add(canvasWidth, canvasHeight);
+    for ( let i = 0; i < normalBubbleAmount; i++ ) {
+        bubbleManager.add({
+            width: canvasWidth, 
+            height: canvasHeight});
+    }
+    for ( let i = 0; i < antiBubbleAmount; i++ ) {
+        bubbleManager.add({
+            width: canvasWidth, 
+            height: canvasHeight,
+            color: window.getComputedStyle( document.body ).getPropertyValue( "--primary-light" ),
+            type: "anti"});
     }
 }
 
@@ -52,10 +63,12 @@ export function render() {
     // Delete all popped bubbles from manager
     bubbleManager.prune(b => {return b.alpha < 0.05});
     if (bubbleManager.count() > 0) {
-        localStorage.setItem("bubbleCount", bubbleManager.count());
+        Object.keys(bubbleManager.bubbleCounts).forEach(k => {
+            localStorage.setItem(k + "BubbleCount", bubbleManager.bubbleCounts[k]);
+        });
+        
     }
     
-
     // Fill the background with the website's dark color.
     ctx.globalAlpha = 1.0;
     ctx.fillStyle = bg;
@@ -72,7 +85,7 @@ export function render() {
         b.y -= b.speed;
 
         if (b.radius < b.maxRadius) {
-            b.radius += 3;
+            b.radius += 2;
         }
     });
 
@@ -89,18 +102,21 @@ export function render() {
 
 
     bubbleManager.simulateBubbles(b => {
-        if (b.y < -100) {
-            b.y = canvasHeight + 100;
-        }
         b.y -= b.speed;
 
         if (b.alpha > 0) {
             b.radius += 2;
             b.alpha -= 0.1 * b.alpha;
-            console.log(bubbleManager.bubblesOnPop);
             if (b.bubblesSummoned < bubbleManager.bubblesOnPop) {
                 b.bubblesSummoned += 1;
-                bubbleManager.add(canvasWidth, canvasHeight, b.color, "particle", b.x, b.y, rnd(0, 360));
+                bubbleManager.add({
+                    x: b.x,
+                    y: b.y,
+                    angle: rnd(0, 360),
+                    width: canvasWidth, 
+                    height: canvasHeight, 
+                    color: b.color, 
+                    type: "particle"});
             }
                 
         }

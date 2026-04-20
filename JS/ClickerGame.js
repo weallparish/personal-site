@@ -7,8 +7,14 @@ function handleClick(event) {
     const y = event.clientY;
     bubbleManager.clickBubbles(x, y, b => {
         b.type = "popping";
+        bubbleManager.bubbleCounts["normal"]--;
         updateBubblesPopped(bubblesPerClick)
     });
+    bubbleManager.clickBubbles(x, y, b => {
+        b.type = "popping";
+        bubbleManager.bubbleCounts["anti"]--;
+        updateBubblesPopped(bubblesPerClick)
+    }, "anti");
 }
 
 export function updateBubblesPopped(amt = 0) {
@@ -16,10 +22,25 @@ export function updateBubblesPopped(amt = 0) {
     bubblesPopped += amt;
     localStorage.setItem("bubblesPopped", bubblesPopped);
 
-    pointDisplay.textContent = bubblesPopped != 1 ? bubblesPopped + " Bubbles Popped" : bubblesPopped + " Bubble Popped";
-
     if (bubblesPopped > 0) {
         showHiddenElements();
+    }
+
+    pointDisplay.textContent = bubblesPopped != 1 ? formatBigNumber(bubblesPopped) + " Bubbles Popped" : bubblesPopped + " Bubble Popped";
+}
+
+function formatBigNumber(num) {
+    if (num > 999_999_999) {
+        return (num/1_000_000_000).toFixed(2) + "B";
+    }
+    else if (num > 999_999) {
+        return (num/1_000_000).toFixed(2) + "M";
+    }
+    else if (num > 999) {
+        return (num/1_000).toFixed(2) + "K";
+    }
+    else {
+        return num;
     }
 }
 
@@ -34,7 +55,7 @@ function shopPurchase(shopText, shopItem) {
     if (bubblesPopped >= shopItem.getCost()) {
         updateBubblesPopped(-1 * shopItem.getCost());
         shopItem.setCost(shopItem.getCost() * 1.15);
-        shopText.textContent = shopItem.shopName + " - " + shopItem.getCost() + " Bubbles";
+        shopText.textContent = shopItem.shopName + " - " + formatBigNumber(shopItem.getCost()) + " Bubbles";
 
         switch(shopItem.shopType) {
             case "bubbleGenerator":
@@ -80,14 +101,22 @@ async function gameLoop() {
         date = new Date();
         let currTime = date.getTime();
 
-        // Logic that should only occur every 5 seconds.
+        // Logic that should only occur every 10 seconds.
         if (currTime - time > 10000) {
             for (let i = 0; i < bubbleGenerators; i++) {
-                bubbleManager.add(canvasWidth, canvasHeight);
+                bubbleManager.add({
+                    y: canvasHeight + 100,
+                    width: canvasWidth, 
+                    height: canvasHeight});
             }
             
             for (let i = 0; i < bubbleDestroyers; i++) {
-                bubbleManager.add(canvasWidth, canvasHeight, window.getComputedStyle( document.body ).getPropertyValue( "--primary-light" ), "anti");
+                bubbleManager.add({
+                    y: -100,
+                    width: canvasWidth, 
+                    height: canvasHeight, 
+                    color: window.getComputedStyle( document.body ).getPropertyValue( "--primary-light" ), 
+                    type: "anti"});
             }
 
             time = currTime;
@@ -99,7 +128,9 @@ async function gameLoop() {
             bubbleManager.clickBubbles(a.x, a.y, b => {
             a.type = "popping"; 
             b.type = "popping"; 
-            updateBubblesPopped(bubblesPerClick)});
+            bubbleManager.bubbleCounts["normal"]--;
+            bubbleManager.bubbleCounts["anti"]--;
+            updateBubblesPopped(bubblesPerClick * 2)});
         }, "anti");
         
         
@@ -138,7 +169,7 @@ var shopItems = [];
 shopElements.forEach(e => {
     const shop = new ClickerShop(e);
     shopItems.push(shop);
-    e.textContent = shop.shopName + " - " + shop.getCost() + " Bubbles";
+    e.textContent = shop.shopName + " - " + formatBigNumber(shop.getCost()) + " Bubbles";
     e.addEventListener("click", () => 
         {shopPurchase(e, shop);});
 });
