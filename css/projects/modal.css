@@ -14,11 +14,23 @@
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
+  backdrop-filter: blur(20px) saturate(80%);
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
+  border-radius: 10px;
   width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.modal-content .social-links {
+  justify-self: center;
+}
+
+.modal-content i {
+    margin: 0px 30px;
+    color: var(--secondary-main);
+    font-size: 300%;
+    margin-right: 5px;
+    transition: 0.3s;
 }
 
 /* The Close Button */
