@@ -37,7 +37,7 @@ function drawCircle( ctx, circle ) {
 
 export function createBubbles() {
     var normalBubbleAmount = Number(localStorage.getItem("normalBubbleCount") || circleDensity * canvasWidth);
-    var antiBubbleAmount = Number(localStorage.getItem("antiBubbleCount") || circleDensity * canvasWidth);
+    var antiBubbleAmount = Number(localStorage.getItem("antiBubbleCount") || 0);
     console.log(normalBubbleAmount + ", " + antiBubbleAmount);
     bubbleManager.clear();
 
@@ -66,7 +66,6 @@ export function render() {
         Object.keys(bubbleManager.bubbleCounts).forEach(k => {
             localStorage.setItem(k + "BubbleCount", bubbleManager.bubbleCounts[k]);
         });
-        
     }
     
     // Fill the background with the website's dark color.

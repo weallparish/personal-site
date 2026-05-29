@@ -182,13 +182,16 @@ statElements.forEach(e => {
 var resetDataButton = document.getElementById("clicker-bottom");
 resetDataButton.addEventListener("click", () => {
     localStorage.removeItem("bubblesPopped");
-    localStorage.removeItem("bubbleCount");
     localStorage.removeItem("bubbleGenerators");
     localStorage.removeItem("bubbleDestroyers");
     localStorage.removeItem("bubblesPerClick");
 
     shopElements.forEach(e => {
         localStorage.removeItem(e.getAttribute("data-name") + "Cost");
+    });
+
+    Object.keys(bubbleManager.bubbleCounts).forEach(k => {
+        localStorage.removeItem(k + "BubbleCount");
     });
 
     location.reload();
