@@ -1,6 +1,7 @@
-import {bubbleManager} from "./helpers/Bubble.js"
+import { bubbleManager } from "./helpers/Bubble.js"
 import { canvasWidth, canvasHeight } from "./helpers/RenderBubbles.js";
 import { ClickerShop } from "./helpers/ClickerShop.js";
+import { openModal } from "./Modal.js"
 
 function handleClick(event) {
     const x = event.clientX;
@@ -153,10 +154,7 @@ canvas.addEventListener("click", handleClick);
 
 var pointDisplay = document.getElementById("point-display");
 pointDisplay.addEventListener("click", () => {
-    window.scrollBy({
-        top: window.innerHeight,
-        behavior: "smooth"
-    })
+    openModal();
 });
 
 var hiddenClickerElements = document.querySelectorAll(".clicker-hidden");
@@ -179,7 +177,7 @@ statElements.forEach(e => {
     updateStat(e);
 })
 
-var resetDataButton = document.getElementById("clicker-bottom");
+var resetDataButton = document.getElementById("reset-data");
 resetDataButton.addEventListener("click", () => {
     localStorage.removeItem("bubblesPopped");
     localStorage.removeItem("bubbleGenerators");

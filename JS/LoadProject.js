@@ -1,3 +1,5 @@
+import {openModal} from "./Modal.js"
+
 // load project html into cards
 window.addEventListener("DOMContentLoaded", () => {
     // For each project card, fetch the html and insert it into the card
@@ -9,7 +11,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const button = card.querySelector("button");
 
     card.addEventListener("click", async () => {
-        modal.style.display = "block";
+        openModal();
         const modal_src = button.getAttribute("data-src");
         const modal_body = document.getElementsByClassName("modal-body")[0];
         const modal_html = await fetch(modal_src).then(r => r.text());
@@ -19,21 +21,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // After the html is loaded, add click event listeners to each card to open the modal with the project details
     // Get the modal
-    var modal = document.getElementById("modal");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementById("closeModalButton");
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }       
+    var modal = document.getElementById("modal");   
 });
 

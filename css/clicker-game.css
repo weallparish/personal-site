@@ -8,16 +8,6 @@
     color: var(--primary-main);
 }
 
-#game-info {
-    top: 100vh;
-    width: 75%;
-    padding-top: 0px;
-    left: 10%;
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-}
-
 #stats {
     height: fit-content;
 }
@@ -25,10 +15,6 @@
 #shop {
     margin: 0 5%;;
 
-}
-
-#shop .cascadia-code-paragraph {
-    color: var(--primary-main);
 }
 
 #shop .shop-element, #shop .reset-data, #point-display {
@@ -40,12 +26,16 @@
     transition: 0.3s;
 }
 
+#shop button {
+    width: fit-content;
+    padding: 10px;
+    margin-bottom: 10px;
+}
 
-#clicker-bottom {
-    top: 75vh;
+#reset-data {
     align-self: left;
-    position: absolute;
     margin: 0 20px 20px 20px;
     font-size: 30px;
-    color: var(--primary-main);
+    width: fit-content;
+    padding: 10px;
 }

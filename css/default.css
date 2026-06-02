@@ -7,11 +7,12 @@ body {
 button {
     padding: 5px 0px;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     width: 105%;
     background-color: var(--secondary-main);
     color: var(--light);
     transition: 0.5s;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
 }
 
 button a {
@@ -63,8 +64,13 @@ i:hover {
 
 .row {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 2fr;
     gap: 1rem;
+}
+
+.row-flex {
+    display: flex;
+    flex-direction: row;
 }
 
 .row:after {
@@ -75,7 +81,6 @@ i:hover {
 
 .button-line {
     margin-top: 20px;
-    margin-right:62%;
     display:grid;
     grid-template-columns: 1fr 1fr;
     grid-auto-flow: column;
@@ -83,6 +88,8 @@ i:hover {
 }
 
 .social-links {
+    justify-self: right;
+    margin-top: 20px;
     width: fit-content;
 }
 
@@ -93,21 +100,20 @@ i:hover {
     border-radius: 10px;
 }
 
-
-@keyframes swipe {
-    0% {width: 0px;}
-    100% {width: 90%;}
-}
-
-@keyframes swipe-down {
-    0% {height: 0px;}
-    100% {height: 100%;}
-}
-
 .ignore-clicks {
     pointer-events: none;
 }
 
 .register-clicks {
     pointer-events: auto;
+}
+
+#terminal-text {
+    bottom: 0;
+    position: absolute;
+    margin: 20px 0;
+    font-size: 150%;
+    color: var(--primary-main);
+    /* animation: blur 30ms infinite, jerkup 60ms infinite; */
+    /*-webkit-animation: blur 30ms infinite;*/
 }
