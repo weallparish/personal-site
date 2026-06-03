@@ -34,3 +34,26 @@
   text-decoration-color: var(--secondary-main);
   color: var(--light);
 }
+
+.hamburger {
+  display: none;
+  scale: 2;
+}
+
+/* Resizing for different screens */
+/* Mobile */
+@media (max-width: 640px) {
+    .hamburger {
+      display: flex;
+    }
+    .links {
+      display: none;
+    }
+}
+
+/* Tablet */
+@media (max-width: 2800px) {
+    .links {
+      flex-direction: column;
+    }
+}

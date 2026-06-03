@@ -4,6 +4,16 @@ body {
     align-content: center;
 }
 
+#main {
+    display: flex;
+    height: 100%;
+    width: 60%;
+    margin: 7% 3%;
+    align-content: center;
+}
+
+/* Button Styles */
+
 button {
     padding: 5px 0px;
     border: none;
@@ -25,6 +35,9 @@ button:hover {
     transition: 0.3s;
 }
 
+
+/* Icon Styles */
+
 i {
     margin: 0px 30px;
     color: var(--light);
@@ -38,46 +51,7 @@ i:hover {
     transition: 0.3s;
 }
 
-#main {
-    display: flex;
-    height: 100%;
-    width: 60%;
-    margin: 7% 3%;
-    align-content: center;
-}
-
-.swipe {
-    overflow: hidden;
-    animation: swipe 3s;
-}
-
-.swipe-down {
-    overflow: hidden;
-    animation: swipe-down 3s;
-}
-
-.centered {
-    display: flex;
-    height: 450px;
-    justify-content: center;
-}
-
-.row {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 1rem;
-}
-
-.row-flex {
-    display: flex;
-    flex-direction: row;
-}
-
-.row:after {
-  content: "";
-  display: flex;
-  clear: both;
-}
+/* Group Styles */
 
 .button-line {
     margin-top: 20px;
@@ -100,20 +74,4 @@ i:hover {
     border-radius: 10px;
 }
 
-.ignore-clicks {
-    pointer-events: none;
-}
 
-.register-clicks {
-    pointer-events: auto;
-}
-
-#terminal-text {
-    bottom: 0;
-    position: absolute;
-    margin: 20px 0;
-    font-size: 150%;
-    color: var(--primary-main);
-    /* animation: blur 30ms infinite, jerkup 60ms infinite; */
-    /*-webkit-animation: blur 30ms infinite;*/
-}

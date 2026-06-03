@@ -1,0 +1,14 @@
+.sprite-img {
+   aspect-ratio: 1/2; 
+   width: 8rem; 
+   height: auto;
+   padding-right: 10px;
+}
+
+#terminal-text {
+    bottom: 0;
+    position: absolute;
+    margin: 20px 0;
+    font-size: 150%;
+    color: var(--primary-main);
+}

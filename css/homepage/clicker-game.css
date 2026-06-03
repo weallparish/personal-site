@@ -39,3 +39,13 @@
     width: fit-content;
     padding: 10px;
 }
+
+/* Mouse clicking functionality */
+
+.ignore-clicks {
+    pointer-events: none;
+}
+
+.register-clicks {
+    pointer-events: auto;
+}

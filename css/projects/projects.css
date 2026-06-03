@@ -14,8 +14,10 @@
     gap: 1.5rem;
 }
 
+/* Project Filter Bar Styles */
+
 .filters {
-    display: flex;
+    display: none;
     flex-direction: row;
     column-gap: 1.5rem;
     max-height: 50px;
@@ -36,11 +38,4 @@
     box-shadow: 0 4px 8px 0 var(--secondary-main);
     transition: 0.3s;
     filter: none;
-}
-
-.grid {
-    width: 70%;
-    columns: 3;
-    column-gap: 1.5rem;
-
 }

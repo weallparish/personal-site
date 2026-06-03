@@ -6,14 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Eden's Portfolio | Home</title>
 
+    <!-- All pages should have these styles. -->
     <link rel="stylesheet" href="css/colors.css">
     <link rel="stylesheet" href="css/default.css">
-    <link rel="stylesheet" href="css/background.css">
-    <link rel="stylesheet" href="css/projects/modal.css">
     <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/clicker-game.css">
+    <link rel="stylesheet" href="css/background.css">
+
+    <!-- Styles specifically for this page. -->
+    <link rel="stylesheet" href="css/homepage/homepage.css">
+    <link rel="stylesheet" href="css/homepage/clicker-game.css">
+    <link rel="stylesheet" href="css/projects/modal.css">
     
+    <!-- Taken from W3 Schools -->
+    <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=VT323&display=swap" rel="stylesheet">
@@ -28,6 +37,10 @@
         <a href="./html/projects.html"><p class="cascadia-code-paragraph">Projects</p></a>
         <a href=""><p class="cascadia-code-paragraph">Blog</p></a>
       </div>
+      <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+      <a href="javascript:void(0);" class="hamburger" onclick="hamburgerMenu()">
+        <i class="fa fa-bars"></i>
+      </a>
     </div>
     <div id="modal" class="register-clicks">
         <div class="modal-content">
@@ -60,12 +73,14 @@
           <div class="column">
             <div class="transparent-box">
               <div class="row-flex">
-                <div class="column" style="align-self: center; padding-right: 10px;">
-                  <img src="images/eden_portrait-large.png" alt="" style="aspect-ratio: 1/2; width: 8vw; height: auto;">
+                <div class="column">
+                  <img src="images/eden_portrait-large.png" alt="" class="sprite-img" >
                 </div>
                 <div class="column">
                   <p class="cascadia-code-header">Hi, I'm <b>EDEN</b></p>
-                  <p class="cascadia-code-header"><b>Computer Science</b> & <b>Game Development</b> Student <br> at the <a class="register-clicks" href="https://www.utah.edu" target="_blank">University of Utah</a></p>
+                  <p class="cascadia-code-header"><b>Computer Science</b> & <b>Game Development</b> Student <br>at the 
+                    <a class="register-clicks" href="https://www.utah.edu" target="_blank">University of Utah</a>
+                  </p>
                   <p class="cascadia-code-paragraph">I'm interested in making computer science playful and accessible!</p>
 
                 </div>
