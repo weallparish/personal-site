@@ -24,7 +24,7 @@
 
 .modal-content i {
     margin: 0px 30px;
-    color: var(--secondary-main);
+    color: var(--light);
     font-size: 300%;
     margin-right: 5px;
     transition: 0.3s;
