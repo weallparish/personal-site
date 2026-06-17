@@ -27,18 +27,11 @@
     .grid {
         columns: 2;
     }
-    .row {
-        grid-template-columns: 1fr;
-        justify-items: center;
-    }
 }
 
 /* Mobile */
 @media (max-width: 640px) {
     .grid {
         columns: 1;
-    }
-    .row {
-        grid-template-columns: 1fr;
     }
 }

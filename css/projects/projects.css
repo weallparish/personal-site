@@ -39,3 +39,12 @@
     transition: 0.3s;
     filter: none;
 }
+
+/* Resizing for different screens */
+/* Tablet */
+@media (max-width: 1280px) {
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+}
