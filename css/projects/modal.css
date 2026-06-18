@@ -70,9 +70,3 @@
   text-decoration: none;
   cursor: pointer;
 }
-
-/* Resizing for different screens */
-/* Mobile */
-@media (max-width: 640px) {
-
-}

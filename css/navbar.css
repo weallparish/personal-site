@@ -13,7 +13,7 @@
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 1.1vw;
 }
 
 .links {
@@ -42,19 +42,22 @@
 
 /* Resizing for different screens */
 /* Tablet */
-@media (max-width: 1280px) {
+@media (max-width: 768px) {
     .topnav {
       width: auto;
-      position:absolute;
+      position:fixed;
     }
     .links {
       display: flex;
       flex-direction: column;
     }
+    .links a {
+      font-size: 2vw;
+    }
 }
 
 /* Mobile */
-@media (max-width: 640px) {
+@media (max-width: 480px) {
     .hamburger {
       display: flex;
     }

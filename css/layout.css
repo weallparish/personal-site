@@ -23,14 +23,14 @@
 
 /* Resizing for different screens */
 /* Tablet */
-@media (max-width: 1280px) {
+@media (max-width: 768px) {
     .grid {
         columns: 2;
     }
 }
 
 /* Mobile */
-@media (max-width: 640px) {
+@media (max-width: 480px) {
     .grid {
         columns: 1;
     }

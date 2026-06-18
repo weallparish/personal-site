@@ -34,7 +34,7 @@
 .project-card img {
     width: 100%;
     aspect-ratio: 1/1;
-    margin: 10px 25px 25px 20px;
+    margin: 4% 10% 10% 8%;
     object-fit: cover;
     border: 10px solid var(--secondary-main);
     border-radius: 10px;
@@ -43,12 +43,12 @@
 .project-card h4 {
     font-size: 100%;
     text-align: center;
-    margin: 10px 0px 5px 0px;
+    margin: 3% 0px 1% 0px;
 }
 
 .project-card p {
     font-size: 90%;
-    margin: 0px 0px 10px 10px;
+    margin: 0px 0px 3% 3%;
 }
 
 .project-card button {
@@ -77,7 +77,7 @@
 
 /* Add some padding inside the card container */
 .project-container {
-  padding: 2px 16px;
+  padding: 1% 4%;
 }
 
 /* Style the tags */
@@ -86,16 +86,16 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 10px 0px 0px 0px;
+    margin: 3% 0px 0px 0px;
 }
 
 .tag {
     background-color: var(--primary-main);
     color: var(--light);
-    padding: 5px 10px;
+    padding: 1% 4%;
     border-radius: 5px;
     font-size: 80%;
-    margin: 5px 5px;
+    margin: 1% 1%;
 }
 
 .tag.complete {
