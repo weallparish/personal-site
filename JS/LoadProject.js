@@ -11,11 +11,11 @@ window.addEventListener("DOMContentLoaded", () => {
     const button = card.querySelector("button");
 
     card.addEventListener("click", async () => {
-        openModal();
         const modal_src = button.getAttribute("data-src");
         const modal_body = document.getElementsByClassName("modal-body")[0];
         const modal_html = await fetch(modal_src).then(r => r.text());
         modal_body.innerHTML = modal_html;
+        openModal();
     });
   });
 

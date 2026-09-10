@@ -43,6 +43,7 @@
 .project-card h4 {
     font-size: 100%;
     text-align: center;
+    text-wrap: auto;
     margin: 3% 0px 1% 0px;
 }
 
@@ -132,4 +133,19 @@
 
 .tag.research {
     background-color: darkslateblue
+}
+
+/* Resizing for different screens */
+/* Tablet */
+@media (max-width: 768px) {
+    .project-card p, .project-card .tag {
+        display: none;
+    }
+    .project-card h4 {
+        font-size: 150%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
 }

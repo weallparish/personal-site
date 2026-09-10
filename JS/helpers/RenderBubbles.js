@@ -69,6 +69,7 @@ export function render() {
     }
     
     // Fill the background with the website's dark color.
+    ctx.filter = "blur(5px)"
     ctx.globalAlpha = 1.0;
     ctx.fillStyle = bg;
     ctx.fillRect( 0, 0, canvasWidth, canvasHeight );

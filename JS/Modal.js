@@ -1,6 +1,7 @@
 // Modal should display when clicked
 export function openModal() {
     modal.style.display = "block";
+    modal.scroll(0,100);
 }
 
 // Get the modal

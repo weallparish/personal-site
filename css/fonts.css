@@ -1,18 +1,14 @@
 .cascadia-code-header {
     font-family: "Cascadia Code", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
 
     color: var(--light);
-    font-size: 225%;
+    font-size: 300%;
     white-space: nowrap;
-    overflow: hidden;
 }
 
 .cascadia-code-header b {
-    font-family: "Cascadia Code", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
 
@@ -21,17 +17,45 @@
 }
 
 .cascadia-code-header i {
-    font-family: "Cascadia Code", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
 
     color: var(--primary-main);
     font-style: italic;
-    font-size: 30px;
+    font-size: 110%;
 }
 
 .cascadia-code-header a {
+    color: var(--primary-main);
+    text-decoration-color: var(--primary-main);
+}
+
+.cascadia-code-subheader {
+    font-family: "Cascadia Code", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    color: var(--light);
+    font-size: 200%;
+    white-space: nowrap;
+}
+
+.cascadia-code-subheader b {
+    font-weight: 600;
+    font-style: normal;
+
+    color: var(--secondary-main);
+}
+
+.cascadia-code-subheader i {
+    font-weight: 400;
+    font-style: normal;
+
+    color: var(--primary-main);
+    font-style: italic;
+}
+
+.cascadia-code-subheader a {
     color: var(--primary-main);
     text-decoration-color: var(--primary-main);
 }
