@@ -1,116 +1,133 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eden's Portfolio | Home</title>
 
-    <!-- All pages should have these styles. -->
-    <link rel="stylesheet" href="css/colors.css">
-    <link rel="stylesheet" href="css/default.css">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/background.css">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eden's Portfolio | Home</title>
 
-    <!-- Styles specifically for this page. -->
-    <link rel="stylesheet" href="css/homepage/homepage.css">
-    <link rel="stylesheet" href="css/homepage/clicker-game.css">
-    <link rel="stylesheet" href="css/projects/modal.css">
-    
-    <!-- Taken from W3 Schools -->
-    <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- All pages should have these styles. -->
+  <link rel="stylesheet" href="css/colors.css">
+  <link rel="stylesheet" href="css/default.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/background.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=VT323&display=swap" rel="stylesheet">
+  <!-- Styles specifically for this page. -->
+  <link rel="stylesheet" href="css/homepage/homepage.css">
+  <link rel="stylesheet" href="css/homepage/clicker-game.css">
+  <link rel="stylesheet" href="css/projects/modal.css">
 
-    <script src="https://kit.fontawesome.com/838b0d89b8.js" crossorigin="anonymous"></script>
-  </head>
-  <body class="ignore-clicks">
-    <canvas class="register-clicks"></canvas>
-    <div class="topnav register-clicks">
-      <div class="links">
-        <a class="active" href="./index.html"><p class="cascadia-code-paragraph">Home</p></a>
-        <a href="./html/projects.html"><p class="cascadia-code-paragraph">Projects</p></a>
-      </div>
-      <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
-      <a href="javascript:void(0);" class="hamburger" onclick="hamburgerMenu()">
-        <i class="fa fa-bars"></i>
+  <!-- Taken from W3 Schools -->
+  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=VT323&display=swap"
+    rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/838b0d89b8.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="ignore-clicks">
+  <canvas class="register-clicks"></canvas>
+  <div class="topnav register-clicks">
+    <div class="links">
+      <a class="active" href="./index.html">
+        <p class="cascadia-code-paragraph">Home</p>
+      </a>
+      <a href="./html/projects.html">
+        <p class="cascadia-code-paragraph">Projects</p>
       </a>
     </div>
-    <div id="modal" class="register-clicks">
-        <div class="modal-content">
-          <span id="closeModalButton" style="color: white">&times;</span>
-          <div class="modal-body">
-            <div class="row">
-              <div id="stats">
-                <p class="cascadia-code-header">Stats</p>
-                <p class="stat-element cascadia-code-paragraph" data-name="bubbleGenerators" data-name-readable="Bubble Generators"></p>
-                <p class="stat-element cascadia-code-paragraph" data-name="bubbleDestroyers" data-name-readable="Anti Bubble Generators"></p>
-                <p class="stat-element cascadia-code-paragraph" data-name="bubblesPerClick" data-name-readable="Bubbliness"></p>
-              </div>
-              <div id="shop">
-                <p class="cascadia-code-header">Shop</p>
-                <button class="shop-element cascadia-code-paragraph" data-name="bubbleGenerator" data-name-readable="Bubble Generator" data-cost="10"></button>
-                <button class="shop-element cascadia-code-paragraph" data-name="bubbleDestroyer" data-name-readable="Anti Bubble Generator" data-cost="50"></button>
-                <button class="shop-element cascadia-code-paragraph" data-name="bubblesPerClick" data-name-readable="Bubblier Bubbles" data-cost="75"></button>
-              </div>
-            </div>
-              
-              
-            
-              <button id="reset-data" class="reset-data cascadia-code-paragraph">Reset Data</button>
-            </div>
-        </div>
-      </div>
-    
-    <div id ="main">
+    <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+    <a href="javascript:void(0);" class="hamburger" onclick="hamburgerMenu()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+  <div id="modal" class="register-clicks">
+    <div class="modal-content">
+      <span id="closeModalButton" style="color: white">&times;</span>
+      <div class="modal-body">
         <div class="row">
-          <div class="column">
-            <div class="transparent-box">
-              <div class="row-flex">
-                <div class="column">
-                  <img src="images/eden_portrait-large.png" alt="" class="sprite-img" >
-                </div>
-                <div class="column">
-                  <p class="cascadia-code-header">Hi, I'm <b>EDEN</b></p>
-                  <p class="cascadia-code-subheader"><b>Computer Science</b> & <b>Game Development</b> Student <br>at the 
-                    <a class="register-clicks" href="https://www.utah.edu" target="_blank">University of Utah</a>
-                  </p>
-                </div>
-              
-              </div>
-            </div>
-            
-            <div class="row">
-              <div class="button-line register-clicks">
-                <button class="cascadia-code-paragraph"><a href="" target="_blank">Resume</a></button>
-                <button class="cascadia-code-paragraph"><a href="html/projects.html">Projects</a></button>
-              </div>
-
-              <div class="social-links register-clicks transparent-box">
-                <a href="https://www.linkedin.com/in/eden-parish-8a5219327/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://github.com/weallparish" target="_blank"><i class="fa-brands fa-github register-clicks"></i></a>
-                <a href="https://junipergarden.itch.io" target="_blank"><i class="fa-brands fa-itch-io register-clicks"></i></a>
-              </div>
-            </div>
-            
-            
+          <div id="stats">
+            <p class="cascadia-code-header">Stats</p>
+            <p class="stat-element cascadia-code-paragraph" data-name="bubbleGenerators"
+              data-name-readable="Bubble Generators"></p>
+            <p class="stat-element cascadia-code-paragraph" data-name="bubbleDestroyers"
+              data-name-readable="Anti Bubble Generators"></p>
+            <p class="stat-element cascadia-code-paragraph" data-name="bubblesPerClick" data-name-readable="Bubbliness">
+            </p>
           </div>
-          <div class="column"> </div>
-        </div> 
-        
+          <div id="shop">
+            <p class="cascadia-code-header">Shop</p>
+            <button class="shop-element cascadia-code-paragraph" data-name="bubbleGenerator"
+              data-name-readable="Bubble Generator" data-cost="10"></button>
+            <button class="shop-element cascadia-code-paragraph" data-name="bubbleDestroyer"
+              data-name-readable="Anti Bubble Generator" data-cost="50"></button>
+            <button class="shop-element cascadia-code-paragraph" data-name="bubblesPerClick"
+              data-name-readable="Bubblier Bubbles" data-cost="75"></button>
+          </div>
+        </div>
+
+
+
+        <button id="reset-data" class="reset-data cascadia-code-paragraph">Reset Data</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="main">
+    <div class="row">
+      <div class="column">
+        <div class="transparent-box">
+          <div class="row-flex">
+            <div class="column">
+              <img src="images/eden_portrait-large.png" alt="" class="sprite-img">
+            </div>
+            <div class="column">
+              <p class="cascadia-code-header">Hi, I'm <b>EDEN</b></p>
+              <p class="cascadia-code-subheader"><b>Computer Science</b> & <b>Game Development</b> Student <br>at the
+                <a class="register-clicks" href="https://www.utah.edu" target="_blank">University of Utah</a>
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="button-line register-clicks">
+            <button class="cascadia-code-paragraph"><a href="html/projects.html">Projects</a></button>
+          </div>
+
+          <div class="social-links register-clicks transparent-box">
+            <a href="https://www.linkedin.com/in/edenjparish/" target="_blank"><i
+                class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/weallparish" target="_blank"><i
+                class="fa-brands fa-github register-clicks"></i></a>
+            <a href="https://junipergarden.itch.io" target="_blank"><i
+                class="fa-brands fa-itch-io register-clicks"></i></a>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="column"> </div>
+    </div>
+
     <p id="terminal-text" class="transparent-box cascadia-code-paragraph">Website Status: Currently ...</p>
     <div id="point-display" class="clicker-hidden register-clicks transparent-box cascadia-code-paragraph">
       <p>0 Bubbles Popped</p>
     </div>
-    </div>
-    <script type="module" src="JS/BgBubbles.js"></script>
-    <script type="module" src="JS/SplashText.js"></script>
-    <script type="module" src="JS/ClickerGame.js"></script>
-    <script type="module" src="JS/Modal.js"></script>
-  </body>
+  </div>
+  <script type="module" src="JS/BgBubbles.js"></script>
+  <script type="module" src="JS/SplashText.js"></script>
+  <script type="module" src="JS/ClickerGame.js"></script>
+  <script type="module" src="JS/Modal.js"></script>
+</body>
+
 </html>
