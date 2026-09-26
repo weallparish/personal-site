@@ -9,6 +9,7 @@ var ctx = canvas.getContext( '2d' );
 var bg = window.getComputedStyle( document.body ).getPropertyValue( "--dark" );
 
 const circleDensity = 0.05;
+const maxBubbles = 100;
 
 
 var windowResized = false;
@@ -36,9 +37,11 @@ function drawCircle( ctx, circle ) {
 }
 
 export function createBubbles() {
-    var normalBubbleAmount = Number(localStorage.getItem("normalBubbleCount") || circleDensity * canvasWidth);
-    var antiBubbleAmount = Number(localStorage.getItem("antiBubbleCount") || 0);
-    console.log(normalBubbleAmount + ", " + antiBubbleAmount);
+    var normalBubbleAmount = circleDensity * canvasWidth;
+    if (normalBubbleAmount > maxBubbles) {
+        normalBubbleAmount = maxBubbles;
+    }
+
     bubbleManager.clear();
 
     // Randomly generate all circle parameters.
@@ -47,27 +50,12 @@ export function createBubbles() {
             width: canvasWidth, 
             height: canvasHeight});
     }
-    for ( let i = 0; i < antiBubbleAmount; i++ ) {
-        bubbleManager.add({
-            width: canvasWidth, 
-            height: canvasHeight,
-            color: window.getComputedStyle( document.body ).getPropertyValue( "--primary-light" ),
-            type: "anti"});
-    }
 }
 
 /**
  * Renders random circles on the screen and floats them upwards.
  */
 export function render() {
-    // Delete all popped bubbles from manager
-    bubbleManager.prune(b => {return b.alpha < 0.05});
-    if (bubbleManager.count() > 0) {
-        Object.keys(bubbleManager.bubbleCounts).forEach(k => {
-            localStorage.setItem(k + "BubbleCount", bubbleManager.bubbleCounts[k]);
-        });
-    }
-    
     // Fill the background with the website's dark color.
     ctx.filter = "blur(5px)"
     ctx.globalAlpha = 1.0;
@@ -88,51 +76,6 @@ export function render() {
             b.radius += 2;
         }
     });
-
-    bubbleManager.simulateBubbles(a => {
-        if (a.y > canvasHeight + 100) {
-            a.y = -100;
-        }
-        a.y += a.speed;
-
-        if (a.radius < a.maxRadius) {
-            a.radius += 2;
-        }
-    }, "anti");
-
-
-    bubbleManager.simulateBubbles(b => {
-        b.y -= b.speed;
-
-        if (b.alpha > 0) {
-            b.radius += 2;
-            b.alpha -= 0.1 * b.alpha;
-            if (b.bubblesSummoned < bubbleManager.bubblesOnPop) {
-                b.bubblesSummoned += 1;
-                bubbleManager.add({
-                    x: b.x,
-                    y: b.y,
-                    angle: rnd(0, 360),
-                    width: canvasWidth, 
-                    height: canvasHeight, 
-                    color: b.color, 
-                    type: "particle"});
-            }
-                
-        }
-            
-    }, "popping");
-
-    bubbleManager.simulateBubbles(b => {
-        b.y -= Math.sin(b.angle)*b.speed*10 + b.speed*5;
-        b.x -= Math.cos(b.angle)*b.speed*10;
-
-        if (b.alpha > 0) {
-            b.alpha -= 0.05 * b.alpha;
-            b.radius += 0.5;
-        }
-            
-    }, "particle");
 
     bubbleManager.renderBubbles(ctx, drawCircle);
 

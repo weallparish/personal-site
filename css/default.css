@@ -1,27 +1,18 @@
 body {
     background-color: var(--dark);
     overflow-y: scroll;
-    align-content: center;
-}
-
-#main {
-    display: flex;
-    height: 100%;
-    width: 60%;
-    margin: 7% 3%;
-    align-content: center;
 }
 
 /* Button Styles */
 
 button {
-    padding: 5px 0px;
+    padding: 0.5rem 0;
     border: none;
     border-radius: 10px;
-    width: 105%;
+    width: 15rem;
     background-color: var(--secondary-main);
     color: var(--light);
-    transition: 0.5s;
+    transition: 1s;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
 }
 
@@ -39,11 +30,11 @@ button:hover {
 /* Icon Styles */
 
 i {
-    margin: 0px 30px;
+    margin: 0 0.5rem;
     color: var(--light);
-    font-size: 200%;
-    margin-right: 5px;
-    transition: 0.3s;
+    font-size: 2.5rem;
+    margin-right: 0.5rem;
+    transition: 1s;
 }
 
 i:hover {
@@ -53,25 +44,11 @@ i:hover {
 
 /* Group Styles */
 
-.button-line {
-    margin-top: 20px;
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-flow: column;
-    grid-column-gap: 20px;
-}
-
-.social-links {
-    justify-self: right;
-    margin-top: 20px;
-    width: fit-content;
-}
-
 .transparent-box {
     width: fit-content;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.7);
     backdrop-filter: blur(20px) saturate(80%);
-    padding: 1%;
+    padding: 1rem;
     border-radius: 15px;
 }
 

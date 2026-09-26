@@ -72,28 +72,6 @@ class BubbleManager {
     count() {
         return this.bubbles.length;
     }
-    prune(condition) {
-        let toDelete = [];
-        this.bubbles.forEach(b => {
-            if (condition(b)) {
-                this.bubbleCounts[b.type]--;
-                toDelete.push(b);
-            }
-        })
-        toDelete.forEach(b => {
-            this.bubbles.splice(this.bubbles.indexOf(b), 1);
-        })
-    }
-    clickBubbles(clickX, clickY, clickEffect, clickFilter="normal") {
-        this.bubbles.forEach(b => {
-            if (b.type == clickFilter) {
-                if (b.wasClicked(clickX, clickY)) {
-                    clickEffect(b);
-                }
-            }
-            
-        })
-    }
     renderBubbles(ctx, renderer) {
         this.bubbles.forEach(b => {
             b.renderBubble(ctx, renderer);
