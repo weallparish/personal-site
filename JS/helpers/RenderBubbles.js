@@ -9,7 +9,7 @@ var ctx = canvas.getContext( '2d' );
 var bg = window.getComputedStyle( document.body ).getPropertyValue( "--dark" );
 
 const circleDensity = 0.05;
-const maxBubbles = 100;
+const maxBubbles = 30;
 
 
 var windowResized = false;
